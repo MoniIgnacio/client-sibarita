@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Sibarita
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## _slogan_
 
-## Available Scripts
+<!-- [![... imagen](./public/images/index-background.jpg)](https://img.cyclic.app/) -->
 
-In the project directory, you can run:
+Made in:
 
-### `npm start`
+- [JavaScript]
+- [Handlebars]
+- [Mongoose]
+- [Bootstrap]
+- [Node.js]
+- [Express]
+- [Cloudinary]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ About Us ✨
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> [XXX] and [xxx]
 
-### `npm test`
+## Description
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## MVP
 
-### `npm run build`
+## Data Structure Server
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> 'http://localhost:5005/api'
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| METHOD | URL                        | PARAM | BODY            | DESCRIPTION                  |
+| ------ | -------------------------- | ----- | --------------- | ---------------------------- |
+| GET    | '/restaurants'             | n\a   | n\a             | Get all restaurants          |
+| POST   | '/restaurants'             | n\a   | all description | Create a new restaurant      |
+| GET    | '/restaurant/restaurantID' | id    | n\a             | Gets a specific restaurant   |
+| DELETE | '/restaurant/restaurantID' | id    | n\a             | Delete a specific restaurant |
+| PATCH  | '/restaurant/restaurantID' | id    | all description | Edit a specific restaurant   |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Data Structure Client
 
-### `npm run eject`
+| METHOD | URL                        | PARAM | BODY            | DESCRIPTION                  |
+| ------ | -------------------------- | ----- | --------------- | ---------------------------- |
+| GET    | '/restaurants'             | n\a   | n\a             | Get all restaurants          |
+| POST   | '/restaurants'             | n\a   | all description | Create a new restaurant      |
+| GET    | '/restaurant/restaurantID' | id    | n\a             | Gets a specific restaurant   |
+| DELETE | '/restaurant/restaurantID' | id    | n\a             | Delete a specific restaurant |
+| PATCH  | '/restaura'                | id    | all description | Edit a specific restaurant   |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Installation
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+OurHome requires [Node.js](https://nodejs.org/) v10+ to run.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Install the dependencies and devDependencies and start the server.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+cd server-sibarita/client-sibarita
+npm i
+npm run dev
+```
 
-## Learn More
+For production environments...
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+npm run start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| Our Home | Contributions                  |
+| -------- | ------------------------------ |
+|          | https://github.com/jelle       |
+|          | https://github.com/MoniIgnacio |
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[javascript]: https://www.javascript.com/
+[handlebars]: https://handlebarsjs.com/
+[mongoose]: https://mongoosejs.com/
+[bootstrap]: https://getbootstrap.com/
+[node.js]: http://nodejs.org
+[express]: http://expressjs.com
+[cloudinary]: https://cloudinary.com/
+[ignacio moni]: https://www.linkedin.com/in/moniignacio02/
+[ivan yebra]: https://www.linkedin.com/in/ivangarciayebra/
