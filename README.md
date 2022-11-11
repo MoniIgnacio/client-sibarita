@@ -24,7 +24,7 @@ Made in:
 
 ## Data Structure Server
 
-> 'http://localhost:5005/api/auth' => USER x
+> 'http://localhost:5005/api/auth' => USER
 
 | METHOD | URL       | PARAM | BODY             | DESCRIPTION                   |
 | ------ | --------- | ----- | ---------------- | ----------------------------- |
@@ -32,17 +32,19 @@ Made in:
 | POST   | '/signup' | n\a   | all description  | New User registrer            |
 | GET    | '/verify' | n/a   | n\a              | Send to FE the verify token   |
 
-> 'http://localhost:5005/api/restaurant' => RESTAURANT x
+> 'http://localhost:5005/api/restaurant' => RESTAURANT
 
-| METHOD | URL       | PARAM | BODY            | DESCRIPTION                  |
-| ------ | --------- | ----- | --------------- | ---------------------------- |
-| GET    | '/'       | n\a   | n\a             | Get all restaurants          |
-| POST   | '/create' | n\a   | all description | Create a new restaurant      |
-| GET    | '/restId' | id    | n\a             | Gets a specific restaurant   |
-| DELETE | '/restId' | id    | n\a             | Delete a specific restaurant |
-| PATCH  | '/restId' | id    | all description | Edit a specific restaurant   |
+| METHOD | URL               | PARAM | BODY            | DESCRIPTION                  |
+| ------ | ----------------- | ----- | --------------- | ---------------------------- |
+| GET    | '/'               | n\a   | n\a             | Get all restaurants          |
+| POST   | '/create'         | n\a   | all description | Create a new restaurant      |
+| GET    | '/restId'         | id    | n\a             | Gets a specific restaurant   |
+| DELETE | '/restId'         | id    | n\a             | Delete a specific restaurant |
+| PATCH  | '/restId'         | id    | all description | Edit a specific restaurant   |
+| POST   | '/restId/reserva' | id    | all description | Create a new reserva         |
+| POST   | '/restId/dish'    | id    | all description | Create a new dish            |
 
-> 'http://localhost:5005/api/user' => USER x
+> 'http://localhost:5005/api/user' => USER
 
 | METHOD | URL       | PARAM | BODY            | DESCRIPTION            |
 | ------ | --------- | ----- | --------------- | ---------------------- |
@@ -50,25 +52,35 @@ Made in:
 | DELETE | '/userId' | id    | n\a             | Delete a specific user |
 | PATCH  | '/userId' | id    | all description | Edit a specific user   |
 
-> 'http://localhost:5005/api/carta' => CARTA
+> 'http://localhost:5005/api/dish' => DISH
 
 | METHOD | URL       | PARAM | BODY            | DESCRIPTION            |
 | ------ | --------- | ----- | --------------- | ---------------------- |
-| GET    | '/'       | n\a   | n\a             | Get all restaurants    |
-| POST   | '/create' | n\a   | all description | Create a new cart      |
-| GET    | '/cartId' | id    | n\a             | Gets a specific cart   |
-| DELETE | '/cartId' | id    | n\a             | Delete a specific cart |
-| PATCH  | '/cartId' | id    | all description | Edit a specific cart   |
+| GET    | '/dishId' | id    | n\a             | Gets a specific dish   |
+| DELETE | '/dishId' | id    | n\a             | Delete a specific dish |
+| PATCH  | '/dishId' | id    | all description | Edit a specific dish   |
 
 > 'http://localhost:5005/api/comment' => COMMENT
 
 | METHOD | URL          | PARAM | BODY            | DESCRIPTION               |
 | ------ | ------------ | ----- | --------------- | ------------------------- |
 | GET    | '/'          | n\a   | n\a             | Get all comments          |
-| POST   | '/create'    | n\a   | all description | Create a new comment      |
 | GET    | '/commentId' | id    | n\a             | Gets a specific comment   |
 | DELETE | '/commentId' | id    | n\a             | Delete a specific comment |
 | PATCH  | '/commentId' | id    | all description | Edit a specific comment   |
+
+> 'http://localhost:5005/api/reserva' => RESERVA
+
+| METHOD | URL                  | PARAM | BODY            | DESCRIPTION               |
+| ------ | -------------------- | ----- | --------------- | ------------------------- |
+| GET    | '/'                  | n\a   | n\a             | Get all reservas          |
+| GET    | '/reservaId'         | id    | n\a             | Gets a specific reserva   |
+| DELETE | '/reservaId'         | id    | n\a             | Delete a specific reserva |
+| PATCH  | '/reservaId'         | id    | all description | Edit a specific reserva   |
+| POST   | '/reservaId/comment' | id    | all description | Create a new comment      |
+
+
+
 
 ## Data Structure Client
 
