@@ -24,15 +24,51 @@ Made in:
 
 ## Data Structure Server
 
-> 'http://localhost:5005/api'
+> 'http://localhost:5005/api/auth' => USER x
 
-| METHOD | URL                        | PARAM | BODY            | DESCRIPTION                  |
-| ------ | -------------------------- | ----- | --------------- | ---------------------------- |
-| GET    | '/restaurants'             | n\a   | n\a             | Get all restaurants          |
-| POST   | '/restaurants'             | n\a   | all description | Create a new restaurant      |
-| GET    | '/restaurant/restaurantID' | id    | n\a             | Gets a specific restaurant   |
-| DELETE | '/restaurant/restaurantID' | id    | n\a             | Delete a specific restaurant |
-| PATCH  | '/restaurant/restaurantID' | id    | all description | Edit a specific restaurant   |
+| METHOD | URL       | PARAM | BODY             | DESCRIPTION                   |
+| ------ | --------- | ----- | ---------------- | ----------------------------- |
+| POST   | '/login'  | n\a   | email & password | Validate the user credentials |
+| POST   | '/signup' | n\a   | all description  | New User registrer            |
+| GET    | '/verify' | n/a   | n\a              | Send to FE the verify token   |
+
+> 'http://localhost:5005/api/restaurant' => RESTAURANT x
+
+| METHOD | URL       | PARAM | BODY            | DESCRIPTION                  |
+| ------ | --------- | ----- | --------------- | ---------------------------- |
+| GET    | '/'       | n\a   | n\a             | Get all restaurants          |
+| POST   | '/create' | n\a   | all description | Create a new restaurant      |
+| GET    | '/restId' | id    | n\a             | Gets a specific restaurant   |
+| DELETE | '/restId' | id    | n\a             | Delete a specific restaurant |
+| PATCH  | '/restId' | id    | all description | Edit a specific restaurant   |
+
+> 'http://localhost:5005/api/user' => USER x
+
+| METHOD | URL       | PARAM | BODY            | DESCRIPTION            |
+| ------ | --------- | ----- | --------------- | ---------------------- |
+| GET    | '/userId' | id    | n\a             | Gets a specific user   |
+| DELETE | '/userId' | id    | n\a             | Delete a specific user |
+| PATCH  | '/userId' | id    | all description | Edit a specific user   |
+
+> 'http://localhost:5005/api/carta' => CARTA
+
+| METHOD | URL       | PARAM | BODY            | DESCRIPTION            |
+| ------ | --------- | ----- | --------------- | ---------------------- |
+| GET    | '/'       | n\a   | n\a             | Get all restaurants    |
+| POST   | '/create' | n\a   | all description | Create a new cart      |
+| GET    | '/cartId' | id    | n\a             | Gets a specific cart   |
+| DELETE | '/cartId' | id    | n\a             | Delete a specific cart |
+| PATCH  | '/cartId' | id    | all description | Edit a specific cart   |
+
+> 'http://localhost:5005/api/comment' => COMMENT
+
+| METHOD | URL          | PARAM | BODY            | DESCRIPTION               |
+| ------ | ------------ | ----- | --------------- | ------------------------- |
+| GET    | '/'          | n\a   | n\a             | Get all comments          |
+| POST   | '/create'    | n\a   | all description | Create a new comment      |
+| GET    | '/commentId' | id    | n\a             | Gets a specific comment   |
+| DELETE | '/commentId' | id    | n\a             | Delete a specific comment |
+| PATCH  | '/commentId' | id    | all description | Edit a specific comment   |
 
 ## Data Structure Client
 
@@ -75,4 +111,4 @@ npm run start
 [express]: http://expressjs.com
 [cloudinary]: https://cloudinary.com/
 [ignacio moni]: https://www.linkedin.com/in/moniignacio02/
-[ivan yebra]: https://www.linkedin.com/in/ivangarciayebra/
+[jelle]: https://www.linkedin.com/in/jelle/
