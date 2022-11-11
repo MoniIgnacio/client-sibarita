@@ -79,18 +79,15 @@ Made in:
 | PATCH  | '/reservaId'         | id    | all description | Edit a specific reserva   |
 | POST   | '/reservaId/comment' | id    | all description | Create a new comment      |
 
-
-
-
 ## Data Structure Client
 
-| METHOD | URL                        | PARAM | BODY            | DESCRIPTION                  |
-| ------ | -------------------------- | ----- | --------------- | ---------------------------- |
-| GET    | '/restaurants'             | n\a   | n\a             | Get all restaurants          |
-| POST   | '/restaurants'             | n\a   | all description | Create a new restaurant      |
-| GET    | '/restaurant/restaurantID' | id    | n\a             | Gets a specific restaurant   |
-| DELETE | '/restaurant/restaurantID' | id    | n\a             | Delete a specific restaurant |
-| PATCH  | '/restaura'                | id    | all description | Edit a specific restaurant   |
+| ROUTE                      | BODY            | DESCRIPTION                  |
+| -------------------------- | --------------- | ---------------------------- |
+| '/restaurants'             | n\a             | Get all restaurants          |
+| '/restaurants'             | all description | Create a new restaurant      |
+| '/restaurant/restaurantID' | n\a             | Gets a specific restaurant   |
+| '/restaurant/restaurantID' | n\a             | Delete a specific restaurant |
+| '/restaura'                | all description | Edit a specific restaurant   |
 
 ## Installation
 
