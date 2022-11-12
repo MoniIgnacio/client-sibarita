@@ -24,7 +24,7 @@ Made in:
 
 ## Data Structure Server
 
-> 'http://localhost:5005/api/auth' => USER
+> 'http://localhost:5005/api/auth' => AUTH
 
 | METHOD | URL       | PARAM | BODY             | DESCRIPTION                   |
 | ------ | --------- | ----- | ---------------- | ----------------------------- |
