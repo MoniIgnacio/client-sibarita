@@ -1,11 +1,11 @@
 import React from 'react'
-import { NavLink } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
     <div>
-    <NavLink to={'/'}>Home</NavLink>
-    <NavLink to={'/sirgnup'}>Sing Up</NavLink>    
+    <Link to={'/'}>Home</Link>
+    <Link to={'/signup'}>Sing Up</Link>    
     </div>
   )
 }
