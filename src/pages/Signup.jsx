@@ -1,55 +1,62 @@
 import { useState } from "react";
 // import { signupService } from "../services/auth.services";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("")
+  const [password2, setPassword2] = useState("");
+  const [role, setRole] = useState("client");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handlePassword2Change = (e) => setPassword2(e.target.value);
+  const handleUsernameChange = (e) => setUsername(e.target.value);
+  const handleRoleChange = (e) => setRole(e.target.value);
 
   const handleSignup = async (e) => {
     e.preventDefault();
 
-
     const newUser = {
       email: email,
-      password: password
-    }
+      username: username,
+      password: password,
+      password2: password2,
+    };
 
     try {
-      
       // await signupService(newUser)
 
-      navigate("/login")
-
+      navigate("/login");
     } catch (error) {
       // console.log(error.response.status)
       // console.log(error.response.data.errorMessage)
       if (error.response && error.response.status === 400) {
         // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
-        setErrorMessage(error.response.data.errorMessage)
+        setErrorMessage(error.response.data.errorMessage);
       } else {
         // si el error es otro (500) entonces si redirecciono a /error
-        navigate("/error")
+        navigate("/error");
       }
     }
-
-
   };
 
   return (
     <div>
-
       <h1>Sign Up</h1>
-    
-      <form onSubmit={handleSignup}>
 
+      <form onSubmit={handleSignup}>
+        <label>¿Tienes un restaurante?</label>
+        <input
+          type="checkbox"
+          name="role"
+          value={role}
+          onChange={handleRoleChange}
+        />
         <label>Email:</label>
         <input
           type="email"
@@ -58,7 +65,15 @@ function Signup() {
           onChange={handleEmailChange}
         />
 
-        <label>Password:</label>
+        <label>Nombre de usuario</label>
+        <input
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+
+        <label>Contraseña:</label>
         <input
           type="password"
           name="password"
@@ -66,12 +81,18 @@ function Signup() {
           onChange={handlePasswordChange}
         />
 
+        <label>Confirmar contraseña:</label>
+        <input
+          type="password"
+          name="password2"
+          value={password2}
+          onChange={handlePassword2Change}
+        />
+
         <button type="submit">Signup</button>
 
         {errorMessage !== "" && <p>{errorMessage}</p>}
-
       </form>
-      
     </div>
   );
 }
