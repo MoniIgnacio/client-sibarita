@@ -1,6 +1,6 @@
 import { useState } from "react";
-// import { signupService } from "../services/auth.services";
 import { useNavigate } from "react-router-dom";
+import { signupService } from "../pages/services/auth.services";
 
 function Signup() {
   const navigate = useNavigate();
@@ -9,6 +9,7 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("client");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -16,6 +17,7 @@ function Signup() {
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handlePassword2Change = (e) => setPassword2(e.target.value);
   const handleUsernameChange = (e) => setUsername(e.target.value);
+  const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleRoleChange = (e) => setRole(e.target.value);
 
   const handleSignup = async (e) => {
@@ -26,10 +28,12 @@ function Signup() {
       username: username,
       password: password,
       password2: password2,
+      role: role,
+      phoneNumber: phoneNumber,
     };
 
     try {
-      // await signupService(newUser)
+      await signupService(newUser);
 
       navigate("/login");
     } catch (error) {
@@ -54,9 +58,17 @@ function Signup() {
         <input
           type="checkbox"
           name="role"
-          value={role}
+          value={"owner"}
           onChange={handleRoleChange}
         />
+        <label>Nombre de usuario</label>
+        <input
+          type="text"
+          name="username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
+
         <label>Email:</label>
         <input
           type="email"
@@ -64,13 +76,12 @@ function Signup() {
           value={email}
           onChange={handleEmailChange}
         />
-
-        <label>Nombre de usuario</label>
+        <label>Nº de teléfono:</label>
         <input
           type="text"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
+          name="phoneNumber"
+          value={phoneNumber}
+          onChange={handlePhoneNumberChange}
         />
 
         <label>Contraseña:</label>
