@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signupService } from "../pages/services/auth.services";
 
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
 function Signup() {
   const navigate = useNavigate();
 
@@ -50,60 +53,68 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div style={{padding: '20vh'}}>
       <h1>Sign Up</h1>
 
-      <form onSubmit={handleSignup}>
-        <label>¿Tienes un restaurante?</label>
-        <input
-          type="checkbox"
-          name="role"
-          value={"owner"}
-          onChange={handleRoleChange}
-        />
-        <label>Nombre de usuario</label>
-        <input
-          type="text"
+      <Form onSubmit={handleSignup}>
+        <fieldset>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">Nombre de usuario</Form.Label>
+            <Form.Control id="disabledTextInput" type="text"
           name="username"
           value={username}
-          onChange={handleUsernameChange}
-        />
+          onChange={handleUsernameChange} />
+          </Form.Group>
 
-        <label>Email:</label>
-        <input
-          type="email"
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">Email:</Form.Label>
+            <Form.Control id="disabledTextInput" type="email"
           name="email"
           value={email}
-          onChange={handleEmailChange}
-        />
-        <label>Nº de teléfono:</label>
-        <input
-          type="text"
+          onChange={handleEmailChange} />
+          </Form.Group>
+
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">Nº de teléfono:</Form.Label>
+            <Form.Control id="disabledTextInput" type="text"
           name="phoneNumber"
           value={phoneNumber}
-          onChange={handlePhoneNumberChange}
-        />
+          onChange={handlePhoneNumberChange} />
+          </Form.Group>
 
-        <label>Contraseña:</label>
-        <input
-          type="password"
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">Contraseña: </Form.Label>
+            <Form.Control id="disabledTextInput" type="password"
           name="password"
           value={password}
-          onChange={handlePasswordChange}
-        />
+          onChange={handlePasswordChange} />
+          </Form.Group>
 
-        <label>Confirmar contraseña:</label>
-        <input
-          type="password"
+          
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">Confirmar contraseña: </Form.Label>
+            <Form.Control id="disabledTextInput" type="password"
           name="password2"
           value={password2}
-          onChange={handlePassword2Change}
-        />
+          onChange={handlePassword2Change} />
+          </Form.Group>
 
-        <button type="submit">Signup</button>
-
+          <Form.Group className="mb-3">
+            <Form.Check
+              type="checkbox"
+              id="disabledFieldsetCheck"
+              label="¿Tienes un restaurante?"
+              name="role"
+              value="owner"
+              onChange={handleRoleChange}
+            />
         {errorMessage !== "" && <p>{errorMessage}</p>}
-      </form>
+          </Form.Group>
+          <Button type="submit">Submit</Button>
+        </fieldset>
+      </Form>
+
+      
     </div>
   );
 }
