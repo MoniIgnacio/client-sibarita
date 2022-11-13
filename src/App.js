@@ -8,6 +8,7 @@ import NotFound from "./pages/NotFound";
 import CreateRestaurant from "./pages/CreateRestaurant";
 import AllRestaurants from "./pages/AllRestaurants";
 import RestaurantDetails from "./pages/RestaurantDetails";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="*" element={<NotFound/>}/>
         <Route path="/error" element={<Error/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }
