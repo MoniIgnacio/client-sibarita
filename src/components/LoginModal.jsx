@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { loginService } from "../pages/services/auth.services";
-import { AuthContext } from "./context/auth.context";
+import { loginService } from "../services/auth.services";
+import { AuthContext } from "../context/auth.context";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";

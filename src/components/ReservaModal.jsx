@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createReservaService } from "../pages/services/restaurant.services";
+import { createReservaService } from "../services/restaurant.services";
 
 function ReservaModal() {
   const navigate = useNavigate();
