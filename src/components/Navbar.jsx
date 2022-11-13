@@ -1,9 +1,10 @@
 import {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import LoginModal from './LoginModal'
 import {AuthContext} from "../context/auth.context"
 import { Button } from 'react-bootstrap'
+
 import ReservaModal from './ReservaModal'
+import LoginModal from './LoginModal'
 
 
 function Navbar() {
@@ -22,6 +23,7 @@ console.log(isLoggedIn)
       <Link to={'/'}>Home</Link>
       <Link to={'/signup'}>Sign Up</Link>
       <Link to={"/restaurant/create"}>Crear Restaurant</Link>
+      <Link to={"/restaurant/"}>All restaurants</Link>
       <Button onClick={handleLogout} variant="secondary">Cerrar Sesión</Button>
     </div>
   )

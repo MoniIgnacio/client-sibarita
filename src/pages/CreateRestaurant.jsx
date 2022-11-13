@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { signupService } from "../services/auth.services";
+import { createRestaurantService } from "../services/restaurant.services";
+
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 function CreateRestaurant() {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ function CreateRestaurant() {
 
   const handleNameChange = (e) => setName(e.target.value);
   const handleLocationChange = (e) => setLocation(e.target.value);
-  const handlePhotoChange = (e) => setPhotos(e.target.value);
+  const handlePhotoChange = (e) => setPhotos(e.target.files[0]);
   const handleCuisinTypeChange = (e) => setCuisinType(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 
@@ -29,9 +32,9 @@ function CreateRestaurant() {
       cuisinType: cuisinType,
       phoneNumber: phoneNumber,
     };
-
+    console.log(newRestaurant)
     try {
-      // await signupService(newRestaurant);
+      await createRestaurantService(newRestaurant);
 
       navigate("/login");
     } catch (error) {
@@ -48,52 +51,83 @@ function CreateRestaurant() {
   };
 
   return (
-    <div>
+    <div style={{padding: '50px'}}>
       <h1>Da de alta tu restaurante</h1>
 
-      <form onSubmit={handleSignup}>
-        <label>Nombre del restaurante:</label>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={handleNameChange}
-        />
+      <Form onSubmit={handleSignup}>
+        <fieldset>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">
+              Nombre del restaurante:{" "}
+            </Form.Label>
+            <Form.Control
+              id="disabledTextInput"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+            />
+          </Form.Group>
 
-        <label>Dirección del restaurante:</label>
-        <input
-          type="text"
-          name="location"
-          value={location}
-          onChange={handleLocationChange}
-        />
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">
+              Dirección del restaurante:{" "}
+            </Form.Label>
+            <Form.Control
+              id="disabledTextInput"
+              type="text"
+              name="location"
+              value={location}
+              onChange={handleLocationChange}
+            />
+          </Form.Group>
 
-        <label>Agrega fotos de tu restaurante</label>
-        <input type="text" />
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledSelect">
+              Tipo de cocina de tu restaurante
+            </Form.Label>
+            <Form.Select
+              id="disabledSelect"
+              name="cuisinType"
+              onChange={handleCuisinTypeChange}
+              value={cuisinType}
+            >
+              <option value={"spanish"}>Española</option>
+              <option value={"italian"}>Italiana</option>
+              <option value={"japanese"}>Japonesa</option>
+              <option value={"chinese"}>China</option>
+            </Form.Select>
+          </Form.Group>
 
-        <label>Agrega los tipos de cocina de tu restaurante</label>
-        <select
-          name="cuisinType"
-          onChange={handleCuisinTypeChange}
-          value={cuisinType}
-        >
-          <option value={"spanish"}>Española</option>
-          <option value={"italian"}>Italiana</option>
-          <option value={"japanese"}>Japonesa</option>
-          <option value={"chinese"}>China</option>
-        </select>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">
+              Nº de teléfono del restaurante:
+            </Form.Label>
+            <Form.Control
+              id="disabledTextInput"
+              type="text"
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+            />
+          </Form.Group>
 
-        <label>Nº de teléfono del restaurante</label>
-        <input
-          type="text"
-          name="phoneNumber"
-          value={phoneNumber}
-          onChange={handlePhoneNumberChange}
-        />
-        <button type="submit">¡Añade tu restaurante!</button>
+          <Form.Group className="mb-3">
+            <Form.Label htmlFor="disabledTextInput">
+              Fotos de tu restaurante
+            </Form.Label>
+            <Form.Control
+              id="disabledTextInput"
+              type="file"
+              name="photo"
+              onChange={handlePhotoChange}
+            />
+          </Form.Group>
 
-        {errorMessage !== "" && <p>{errorMessage}</p>}
-      </form>
+          {errorMessage !== "" && <p>{errorMessage}</p>}
+          <Button type="submit">¡Añade tu restaurante!</Button>
+        </fieldset>
+      </Form>
     </div>
   );
 }

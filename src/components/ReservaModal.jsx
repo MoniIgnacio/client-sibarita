@@ -32,6 +32,8 @@ function ReservaModal() {
       hasConsumed: hasConsumed,
     };
 
+    console.log(newReserve)
+
     try {
       await createReservaService(newReserve);
       //! cambiar navigate a vista detallada del restaurante
@@ -73,7 +75,7 @@ function ReservaModal() {
                 <Form.Label htmlFor="disabledTextInput">Hora:</Form.Label>
                 <Form.Control
                   id="disabledTextInput"
-                  type="date"
+                  type="time"
                   name="hour"
                   value={hour}
                   onChange={handleHourChange}
@@ -88,6 +90,8 @@ function ReservaModal() {
                   id="disabledTextInput"
                   type="number"
                   name="pax"
+                  max= '15'
+                  min= '1'
                   value={pax}
                   onChange={handlePaxChange}
                 />

@@ -20,8 +20,9 @@ const editRestaurantService = (restId) => {
   return service.patch(`/restaurant/${restId}`);
 };
 
-const createReservaService = (restId) => {
-  return service.post(`/restaurant/${restId}/reserva`);
+const createReservaService = ( newReserve,restId) => {
+  // console.log(newReserve, restId) da error porque tiene que estar vinculado al id de un restaurante y aun no esta realizada esa funcionalidad
+  return service.post(`/restaurant/${restId}/reserva`, newReserve);
 };
 
 const createDishService = (restId) => {
