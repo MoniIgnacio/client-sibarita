@@ -67,7 +67,7 @@ function Signup() {
           </Form.Group>
 
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Email:</Form.Label>
+            <Form.Label htmlFor="disabledTextInput">E-mail:</Form.Label>
             <Form.Control id="disabledTextInput" type="email"
           name="email"
           value={email}
@@ -110,7 +110,7 @@ function Signup() {
             />
         {errorMessage !== "" && <p>{errorMessage}</p>}
           </Form.Group>
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Crear cuenta</Button>
         </fieldset>
       </Form>
 
