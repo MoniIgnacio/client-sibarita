@@ -147,7 +147,7 @@ function RestaurantEdit() {
                   />
                 </Form.Group>
 
-                {/* <Form.Group className="mb-3">
+                <Form.Group className="mb-3">
                   <Form.Label htmlFor="disabledTextInput">
                     Fotos de tu restaurante
                   </Form.Label>
@@ -157,7 +157,7 @@ function RestaurantEdit() {
                     name="photo"
                     onChange={handlePhotoChange}
                   />
-                </Form.Group> */}
+                </Form.Group>
 
                 {errorMessage !== "" && <p>{errorMessage}</p>}
               </fieldset>

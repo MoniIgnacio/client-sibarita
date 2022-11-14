@@ -4,21 +4,22 @@ import { createRestaurantService } from "../services/restaurant.services";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { uploadImage } from "../services/upload.services";
 
 function CreateRestaurant() {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [photos, setPhotos] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [cuisinType, setCuisinType] = useState("spanish");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [isUploadingImage, setIsUploadinImage] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleNameChange = (e) => setName(e.target.value);
   const handleLocationChange = (e) => setLocation(e.target.value);
-  const handlePhotoChange = (e) => setPhotos(e.target.files[0]);
   const handleCuisinTypeChange = (e) => setCuisinType(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 
@@ -28,17 +29,16 @@ function CreateRestaurant() {
     const newRestaurant = {
       name: name,
       location: location,
-      photos: photos,
+      photos: imageUrl,
       cuisinType: cuisinType,
       phoneNumber: phoneNumber,
     };
-    console.log(newRestaurant)
+    console.log(newRestaurant);
     try {
       await createRestaurantService(newRestaurant);
 
       navigate("/login");
     } catch (error) {
-      // console.log(error.response.status)
       // console.log(error.response.data.errorMessage)
       if (error.response && error.response.status === 400) {
         // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
@@ -50,8 +50,22 @@ function CreateRestaurant() {
     }
   };
 
+  const handlePhotoChange = async (event) => {
+    setIsUploadinImage(true);
+
+    const sendObj = new FormData();
+    sendObj.append("photo", event.target.files[0]);
+    try {
+      const response = await uploadImage(sendObj);
+      setImageUrl(response.data.img);
+      setIsUploadinImage(false);
+    } catch (error) {
+      navigate("/error");
+    }
+  };
+
   return (
-    <div style={{padding: '50px'}}>
+    <div style={{ padding: "50px" }}>
       <h1>Da de alta tu restaurante</h1>
 
       <Form onSubmit={handleCreate}>
@@ -123,7 +137,13 @@ function CreateRestaurant() {
               onChange={handlePhotoChange}
             />
           </Form.Group>
+          {isUploadingImage === true && <p>... subiendo imagen</p>}
 
+          {imageUrl !== "" ? (
+            <img src={imageUrl} alt="image" width={"100px"} />
+          ) : (
+            <p>selecciona imagen</p>
+          )}
           {errorMessage !== "" && <p>{errorMessage}</p>}
           <Button type="submit">¡Añade tu restaurante!</Button>
         </fieldset>
