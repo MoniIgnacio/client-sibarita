@@ -10,6 +10,7 @@ import AllRestaurants from "./pages/AllRestaurants";
 import RestaurantDetails from "./pages/RestaurantDetails";
 import Footer from "./components/Footer";
 import Cartamodal from "./components/CartaModal";
+import RestaurantEdit from "./pages/RestaurantEdit";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/restaurant/" element={<AllRestaurants/>}/>
         <Route path="/restaurant/create" element={<CreateRestaurant/>}/>
         <Route path="/restaurant/:restId" element={<RestaurantDetails/>}/>
+        <Route path="/restaurant/:restId/edit" element={<RestaurantEdit/>}/>
         <Route path="/restaurant/:restId/dish" element={<Cartamodal/>}/>
 
 

@@ -22,7 +22,7 @@ function CreateRestaurant() {
   const handleCuisinTypeChange = (e) => setCuisinType(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
 
-  const handleSignup = async (e) => {
+  const handleCreate = async (e) => {
     e.preventDefault();
 
     const newRestaurant = {
@@ -54,7 +54,7 @@ function CreateRestaurant() {
     <div style={{padding: '50px'}}>
       <h1>Da de alta tu restaurante</h1>
 
-      <Form onSubmit={handleSignup}>
+      <Form onSubmit={handleCreate}>
         <fieldset>
           <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">
