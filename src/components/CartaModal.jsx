@@ -57,12 +57,12 @@ function Cartamodal() {
       <div>
         <>
           <Button variant="primary" onClick={handleShow}>
-            Inicia Sesion!
+            Create a Dish
           </Button>
 
           <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-              <Modal.Title>Inicia Sesión</Modal.Title>
+              <Modal.Title>Create a Dish</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               {" "}

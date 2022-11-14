@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getRestaurantService } from "../services/restaurant.services";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import RestaurantEdit from "./RestaurantEdit";
+import AllDishesModal from "./AllDishesModal";
 
 function RestaurantDetails() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function RestaurantDetails() {
       <h6>{details.phoneNumber}</h6>
       <h6>{details.owner}</h6>
       <RestaurantEdit />
+      <AllDishesModal />
 
     </div>
   );
