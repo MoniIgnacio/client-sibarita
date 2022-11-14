@@ -1,12 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getRestaurantService } from "../services/restaurant.services";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+
 
 function RestaurantDetails() {
   const navigate = useNavigate();
   const [details, setDetails] = useState();
   const [isFetching, setIsFetching] = useState(true);
+  const {restId} = useParams()
 
   useEffect(() => {
     getRestaurant();
@@ -14,10 +16,10 @@ function RestaurantDetails() {
 
   const getRestaurant = async () => {
     try {
-      let response = await getRestaurantService();
+      let response = await getRestaurantService(restId);
       setDetails(response.data);
       setIsFetching(false);
-      console.log(response.data);
+      console.log('response dataaaaa',response.data);
     } catch (error) {
       console.log(error);
       navigate("/error");
