@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function DeleteModal() {
+function DeleteModalRestaurant() {
   const navigate = useNavigate();
   const { restId } = useParams();
   const [show, setShow] = useState(false);
@@ -48,4 +48,4 @@ function DeleteModal() {
   );
 }
 
-export default DeleteModal;
+export default DeleteModalRestaurant;

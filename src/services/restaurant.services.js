@@ -25,8 +25,8 @@ const createReservaService = ( newReserve,restId) => {
   return service.post(`/restaurant/${restId}/reserva`, newReserve);
 };
 
-const createDishService = (restId) => {
-  return service.post(`/restaurant/${restId}/dish`);
+const createDishService = ( newDish, restId) => {
+  return service.post(`/restaurant/${restId}/dish`, newDish);
 };
 
 export {

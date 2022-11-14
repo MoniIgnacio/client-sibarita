@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { createDishService } from "../services/restaurant.services";
 
 import Button from "react-bootstrap/Button";
@@ -8,11 +8,13 @@ import Modal from "react-bootstrap/Modal";
 
 function Cartamodal() {
   const navigate = useNavigate();
+  const { restId } = useParams();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("principal");
+
 
   // modal states!
   const [show, setShow] = useState(false);
@@ -35,10 +37,9 @@ function Cartamodal() {
       price,
       category,
     };
-    console.log(newDish);
 
     try {
-      await createDishService(newDish);
+      await createDishService(newDish, restId);
       //!Cambiar navigate
       navigate("/profile");
     } catch (error) {

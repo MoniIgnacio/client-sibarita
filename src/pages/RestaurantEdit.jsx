@@ -3,9 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   editRestaurantService,
   getRestaurantService,
-  deleteRestaurantService,
 } from "../services/restaurant.services";
-import DeleteModal from "../components/DeleteModal";
+import DeleteModalRestaurant from "../components/DeleteModalRestaurant";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -176,7 +175,7 @@ function RestaurantEdit() {
             <Button variant="primary" onClick={handleEdit}>
               Editar
             </Button>
-            <DeleteModal/>
+            <DeleteModalRestaurant/>
           </Modal.Footer>
         </Modal>
       </>
