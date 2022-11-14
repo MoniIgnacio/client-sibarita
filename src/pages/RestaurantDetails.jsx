@@ -28,6 +28,7 @@ function RestaurantDetails() {
 
   return (
     <div>
+    <img src={details.photos} alt="restphoto" />
       <h1>{details.name}</h1>
       <h3>{details.location}</h3>
       <h5>{details.cuisinType}</h5>

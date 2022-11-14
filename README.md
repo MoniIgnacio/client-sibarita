@@ -107,10 +107,10 @@ For production environments...
 npm run start
 ```
 
-| Our Home | Contributions                  |
-| -------- | ------------------------------ |
-|          | https://github.com/jelle       |
-|          | https://github.com/MoniIgnacio |
+| Our Home | Contributions                   |
+| -------- | ------------------------------- |
+|          | https://github.com/JelleManzano |
+|          | https://github.com/MoniIgnacio  |
 
 [javascript]: https://www.javascript.com/
 [handlebars]: https://handlebarsjs.com/
