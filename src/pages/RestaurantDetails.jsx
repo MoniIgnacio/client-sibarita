@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getRestaurantService } from "../services/restaurant.services";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import RestaurantEdit from "./RestaurantEdit";
 
 function RestaurantDetails() {
   const navigate = useNavigate();
@@ -23,9 +24,7 @@ function RestaurantDetails() {
       navigate("/error");
     }
   };
-  if (isFetching) {
-    return <h3>Loading... </h3>;
-  }
+ 
 
   return (
     <div>
@@ -33,6 +32,9 @@ function RestaurantDetails() {
       <h3>{details.location}</h3>
       <h5>{details.cuisinType}</h5>
       <h6>{details.phoneNumber}</h6>
+      <h6>{details.owner}</h6>
+      <RestaurantEdit />
+
     </div>
   );
 }

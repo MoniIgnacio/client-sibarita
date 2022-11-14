@@ -40,7 +40,7 @@ Made in:
 | POST   | '/create'         | n\a   | all description | Create a new restaurant      |
 | GET    | '/restId'         | id    | n\a             | Gets a specific restaurant   |
 | DELETE | '/restId'         | id    | n\a             | Delete a specific restaurant |
-| PATCH  | '/restId'         | id    | all description | Edit a specific restaurant   |
+| PATCH  | '/restId/edit'    | id    | all description | Edit a specific restaurant   |
 | POST   | '/restId/reserva' | id    | all description | Create a new reserva         |
 | POST   | '/restId/dish'    | id    | all description | Create a new dish            |
 
