@@ -17,7 +17,6 @@ function RestaurantDetails() {
       let response = await getRestaurantService(restId);
       setDetails(response.data);
       setIsFetching(false);
-      console.log("ejemplo de objeto",response.data);
     } catch (error) {
       console.log(error);
       navigate("/error");
