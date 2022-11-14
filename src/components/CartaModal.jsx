@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { createCartaService } from "../services/restaurant.services";
+import { createDishService } from "../services/restaurant.services";
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -21,7 +21,12 @@ function Cartamodal() {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSignup = async (e) => {
+  const handleTitleChange = (e) => setTitle(e.target.value);
+  const handleDescriptionChange = (e) => setDescription(e.target.value);
+  const handlePriceChange = (e) => setPrice(e.target.value);
+  const handleCategoryChange = (e) => setCategory(e.target.value);
+
+  const handleDish = async (e) => {
     e.preventDefault();
 
     const newDish = {
@@ -33,7 +38,8 @@ function Cartamodal() {
     console.log(newDish);
 
     try {
-      await createCartaService(newDish);
+      await createDishService(newDish);
+      //!Cambiar navigate
       navigate("/profile");
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -47,60 +53,91 @@ function Cartamodal() {
   };
 
   return (
-  <div><div>
-  <>
-    <Button variant="primary" onClick={handleShow}>
-     Inicia Sesion!
-    </Button>
+    <div>
+      <div>
+        <>
+          <Button variant="primary" onClick={handleShow}>
+            Inicia Sesion!
+          </Button>
 
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>Inicia Sesión</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {" "}
-        <Form onSubmit={handleLogin}>
-          <fieldset>
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledTextInput">Email:</Form.Label>
-              <Form.Control
-                id="disabledTextInput"
-                type="email"
-                name="email"
-                value={email}
-                onChange={handleEmailChange}
-              />
-            </Form.Group>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Inicia Sesión</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {" "}
+              <Form onSubmit={handleDish}>
+                <fieldset>
+                  <Form.Group className="mb-3">
+                    <Form.Label htmlFor="disabledTextInput">
+                      Nombre del plato:
+                    </Form.Label>
+                    <Form.Control
+                      id="disabledTextInput"
+                      type="text"
+                      name="title"
+                      value={title}
+                      onChange={handleTitleChange}
+                    />
+                  </Form.Group>
 
-            <Form.Group className="mb-3">
-              <Form.Label htmlFor="disabledTextInput">
-                Contraseña:{" "}
-              </Form.Label>
-              <Form.Control
-                id="disabledTextInput"
-                type="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
-            </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label htmlFor="disabledTextInput">
+                      Descripción del plato:
+                    </Form.Label>
+                    <Form.Control
+                      id="disabledTextInput"
+                      type="text"
+                      name="description"
+                      value={description}
+                      onChange={handleDescriptionChange}
+                    />
+                  </Form.Group>
 
-            {errorMessage !== "" && <p>{errorMessage}</p>}
-          </fieldset>
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
-          Close
-        </Button>
-        <Button variant="primary" onClick={handleLogin}>
-          Access
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </>
-</div>
-  </div>)
+                  <Form.Group className="mb-3">
+                    <Form.Label htmlFor="disabledTextInput">Precio:</Form.Label>
+                    <Form.Control
+                      id="disabledTextInput"
+                      type="number"
+                      name="price"
+                      value={price}
+                      onChange={handlePriceChange}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label htmlFor="disabledSelect">
+                      Categoría del plato:
+                    </Form.Label>
+                    <Form.Select
+                      id="disabledSelect"
+                      name="category"
+                      onChange={handleCategoryChange}
+                      value={category}
+                    >
+                      <option value={"entrante"}>Entrante</option>
+                      <option value={"principal"}>Principal</option>
+                      <option value={"postre"}>Postre</option>
+                    </Form.Select>
+                  </Form.Group>
+
+                  {errorMessage !== "" && <p>{errorMessage}</p>}
+                </fieldset>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Cerrar
+              </Button>
+              <Button variant="primary" onClick={handleDish}>
+                Añade tu plato
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </>
+      </div>
+    </div>
+  );
 }
 
 export default Cartamodal;

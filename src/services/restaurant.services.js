@@ -9,6 +9,7 @@ const createRestaurantService = (newUser) => {
 };
 
 const getRestaurantService = (restId) => {
+  console.log(restId)
   return service.get(`/restaurant/${restId}`);
 };
 

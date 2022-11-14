@@ -21,7 +21,7 @@ function App() {
         <Route path="/signup" element={<Signup/>} />
         <Route path="/restaurant/" element={<AllRestaurants/>}/>
         <Route path="/restaurant/create" element={<CreateRestaurant/>}/>
-        <Route path="/restaurant/details" element={<RestaurantDetails/>}/>
+        <Route path="/restaurant/:restId" element={<RestaurantDetails/>}/>
         <Route path="/restaurant/:restId/dish" element={<Cartamodal/>}/>
 
 

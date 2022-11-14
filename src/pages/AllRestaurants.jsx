@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAllRestaurantsService } from "../services/restaurant.services";
+
 
 function AllRestaurants() {
   const navigate = useNavigate();
@@ -33,7 +34,10 @@ function AllRestaurants() {
     <div>
       modal de todos los restaurantes con su informacion imagen
       {list.map((eachRestaurant) => {
-        return <div key={eachRestaurant._id}>{eachRestaurant._id}</div>;
+        return (<div key={eachRestaurant._id}>
+        <h2>{eachRestaurant.name}</h2>
+        <Link to={`/restaurant/${eachRestaurant._id}`}>Más información</Link>
+        </div>)
       })}
     </div>
   );
