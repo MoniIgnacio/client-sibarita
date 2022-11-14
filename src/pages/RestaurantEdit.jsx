@@ -3,8 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   editRestaurantService,
   getRestaurantService,
+  deleteRestaurantService,
 } from "../services/restaurant.services";
-
+import DeleteModal from "../components/DeleteModal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -23,8 +24,11 @@ function RestaurantEdit() {
 
   // modal states!
   const [show, setShow] = useState(false);
+ 
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+ 
 
   useEffect(() => {
     getData();
@@ -63,7 +67,7 @@ function RestaurantEdit() {
       };
 
       await editRestaurantService(updateRestaurant, restId);
-      handleClose()
+      handleClose();
       // navigate(`/restaurant`);
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -75,6 +79,8 @@ function RestaurantEdit() {
       }
     }
   };
+
+
 
   return (
     <div>
@@ -168,8 +174,9 @@ function RestaurantEdit() {
               Close
             </Button>
             <Button variant="primary" onClick={handleEdit}>
-              Edit
+              Editar
             </Button>
+            <DeleteModal/>
           </Modal.Footer>
         </Modal>
       </>
