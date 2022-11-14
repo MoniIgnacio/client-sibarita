@@ -39,13 +39,9 @@ function LoginModal() {
       //!Cambiar navigate
       navigate("/profile");
     } catch (error) {
-      // console.log(error.response.status)
-      // console.log(error.response.data.errorMessage)
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }
@@ -55,7 +51,7 @@ function LoginModal() {
     <div>
       <>
         <Button variant="primary" onClick={handleShow}>
-         Inicia Sesion!
+          ¡Inicia Sesión!
         </Button>
 
         <Modal show={show} onHide={handleClose}>
@@ -67,7 +63,7 @@ function LoginModal() {
             <Form onSubmit={handleLogin}>
               <fieldset>
                 <Form.Group className="mb-3">
-                  <Form.Label htmlFor="disabledTextInput">Email:</Form.Label>
+                  <Form.Label htmlFor="disabledTextInput">E-mail:</Form.Label>
                   <Form.Control
                     id="disabledTextInput"
                     type="email"
@@ -79,7 +75,7 @@ function LoginModal() {
 
                 <Form.Group className="mb-3">
                   <Form.Label htmlFor="disabledTextInput">
-                    Contraseña:{" "}
+                    Contraseña:
                   </Form.Label>
                   <Form.Control
                     id="disabledTextInput"
@@ -96,10 +92,10 @@ function LoginModal() {
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Close
+              Cerrar
             </Button>
             <Button variant="primary" onClick={handleLogin}>
-              Access
+              Acceder
             </Button>
           </Modal.Footer>
         </Modal>

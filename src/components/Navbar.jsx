@@ -2,6 +2,7 @@ import {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import {AuthContext} from "../context/auth.context"
 import { Button } from 'react-bootstrap'
+import ReservaModal from './ReservaModal'
 
 import ReservaModal from './ReservaModal'
 import LoginModal from './LoginModal'
