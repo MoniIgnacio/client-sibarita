@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, CardGroup, Button, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllRestaurantsService } from "../services/restaurant.services";
 
@@ -34,24 +34,26 @@ function AllRestaurants() {
     <div>
       {list.map((eachRestaurant) => {
         return (
-          <Row xs={1} md={2} className="g-4">
-            {Array.from({ length: 4 }).map((_, idx) => (
-              <Col>
-                <Card>
-                  <img variant="top" src={eachRestaurant.photos} alt='img-restaurant' width={'100px'}/>
-                  <Card.Title>{eachRestaurant.name}</Card.Title>
-                  <Card.Body>
-                    <Card.Text key={eachRestaurant._id}>
-                      {eachRestaurant.location}
-                    </Card.Text>
-                      {" "}
-                      <Link to={`/restaurant/${eachRestaurant._id}`}>
-                        Más información
-                      </Link>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+          <Row xs={1} md={3} className="g-4">
+            <Col>
+              <Card>
+                <img
+                  variant="top"
+                  src={eachRestaurant.photos}
+                  alt="img-restaurant"
+                  width={"100px"}
+                />
+                <Card.Title>{eachRestaurant.name}</Card.Title>
+                <Card.Body>
+                  <Card.Text key={eachRestaurant._id}>
+                    {eachRestaurant.location}
+                  </Card.Text>{" "}
+                  <Link to={`/restaurant/${eachRestaurant._id}`}>
+                    Más información
+                  </Link>
+                </Card.Body>
+              </Card>
+            </Col>
           </Row>
         );
       })}
@@ -59,4 +61,6 @@ function AllRestaurants() {
   );
 }
 
+{
+}
 export default AllRestaurants;
