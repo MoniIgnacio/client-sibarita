@@ -34,15 +34,16 @@ Made in:
 
 > 'http://localhost:5005/api/restaurant' => RESTAURANT
 
-| METHOD | URL               | PARAM | BODY            | DESCRIPTION                  |
-| ------ | ----------------- | ----- | --------------- | ---------------------------- |
-| GET    | '/'               | n\a   | n\a             | Get all restaurants          |
-| POST   | '/create'         | n\a   | all description | Create a new restaurant      |
-| GET    | '/restId'         | id    | n\a             | Gets a specific restaurant   |
-| DELETE | '/restId'         | id    | n\a             | Delete a specific restaurant |
-| PATCH  | '/restId/edit'    | id    | all description | Edit a specific restaurant   |
-| POST   | '/restId/reserva' | id    | all description | Create a new reserva         |
-| POST   | '/restId/dish'    | id    | all description | Create a new dish            |
+| METHOD | URL                 | PARAM | BODY            | DESCRIPTION                  |
+| ------ | ------------------- | ----- | --------------- | ---------------------------- |
+| GET    | '/'                 | n\a   | n\a             | Get all restaurants          |
+| POST   | '/create'           | n\a   | all description | Create a new restaurant      |
+| GET    | '/restId'           | id    | n\a             | Gets a specific restaurant   |
+| DELETE | '/restId'           | id    | n\a             | Delete a specific restaurant |
+| PATCH  | '/restId/edit'      | id    | all description | Edit a specific restaurant   |
+| POST   | '/restId/reserva'   | id    | all description | Create a new reserva         |
+| POST   | '/restId/dish'      | id    | all description | Create a new dish            |
+| GET    | '/restId/alldishes' | id    | n\a             | Gets all dishes              |
 
 > 'http://localhost:5005/api/user' => USER
 

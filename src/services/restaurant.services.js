@@ -29,6 +29,10 @@ const createDishService = ( newDish, restId) => {
   return service.post(`/restaurant/${restId}/dish`, newDish);
 };
 
+const getAllDishesService = (restId) => {
+  return service.get(`/restaurant/${restId}/alldishes`);
+};
+
 export {
   getAllRestaurantsService,
   createRestaurantService,
@@ -36,5 +40,6 @@ export {
   deleteRestaurantService,
   editRestaurantService,
   createReservaService,
-  createDishService
+  createDishService,
+  getAllDishesService
 };

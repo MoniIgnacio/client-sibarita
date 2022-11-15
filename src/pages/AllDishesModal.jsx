@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getDishService } from "../services/dish.services.js";
+import { getAllDishesService } from "../services/restaurant.services";
+import {
+  Button,
+  Modal,
+  Badge,
+  ListGroup,
+  Col,
+  Row,
+  Tab,
+} from "react-bootstrap";
 
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import CartaModal from "../components/CartaModal";
 
 function AllDishesModal() {
@@ -30,11 +37,9 @@ function AllDishesModal() {
 
   const getList = async () => {
     try {
-      let response = await getDishService(restId);
+      let response = await getAllDishesService(restId);
       setList(response.data);
       setIsFetching(false);
-      console.log(response.data);
-
       console.log(response.data);
     } catch (error) {
       console.log(error);
@@ -61,10 +66,58 @@ function AllDishesModal() {
           onHide={() => setShow(false)}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Dishes</Modal.Title>
-            <CartaModal />
+            <Modal.Title> All Dishes</Modal.Title>
           </Modal.Header>
-          <Modal.Body> Todo contenido de los platos </Modal.Body>
+          <br />
+          <CartaModal />
+          <Modal.Body>
+            <Tab.Container
+              id="list-group-tabs-example"
+              defaultActiveKey="#link1"
+            >
+              <Row>
+                <Col sm={4}>
+                  <ListGroup>
+                    <ListGroup.Item action href="#link1">
+                      Entrada
+                    </ListGroup.Item>
+                    <ListGroup.Item action href="#link2">
+                      Principal
+                    </ListGroup.Item>
+                    <ListGroup.Item action href="#link3">
+                      Postre
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Col>
+                <Col sm={8}>
+                  <Tab.Content>
+                    <Tab.Pane eventKey="#link1">
+                      <ListGroup as="ol" numbered>
+                        {list.map((eachDish) => {
+                          return (
+                            <ListGroup.Item
+                              as="li"
+                              className="d-flex justify-content-between align-items-start"
+                            >
+                              <div className="ms-2 me-auto">
+                                <div className="fw-bold">{eachDish.title}</div>
+                                {eachDish.description}
+                              </div>
+                              <Badge bg="primary" pill>
+                                $ {eachDish.price}
+                              </Badge>
+                            </ListGroup.Item>
+                          );
+                        })}
+                      </ListGroup>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="#link2">otro map</Tab.Pane>
+                    <Tab.Pane eventKey="#link3">map</Tab.Pane>
+                  </Tab.Content>
+                </Col>
+              </Row>
+            </Tab.Container>
+          </Modal.Body>
         </Modal>
       </>
     </div>

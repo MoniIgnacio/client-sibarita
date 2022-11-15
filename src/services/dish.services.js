@@ -12,8 +12,8 @@ const editDishService = (restaurantId) => {
   return service.patch(`/dish/${restaurantId}`);
 };
 
-export { 
-    getDishService,
-    deleteDishService,
-    editDishService
- };
+export {
+  getDishService,
+  deleteDishService,
+  editDishService,
+};
