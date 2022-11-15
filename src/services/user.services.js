@@ -9,7 +9,7 @@ const deleteUserService = (userId) => {
 };
 
 const editUserService = (updateUser,userId) => {
-  return service.patch(`/user/${userId}`);
+  return service.patch(`/user/${userId}`, updateUser);
 };
 
 
