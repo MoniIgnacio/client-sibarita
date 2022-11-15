@@ -47,11 +47,12 @@ Made in:
 
 > 'http://localhost:5005/api/user' => USER
 
-| METHOD | URL       | PARAM | BODY            | DESCRIPTION            |
-| ------ | --------- | ----- | --------------- | ---------------------- |
-| GET    | '/userId' | id    | n\a             | Gets a specific user   |
-| DELETE | '/userId' | id    | n\a             | Delete a specific user |
-| PATCH  | '/userId' | id    | all description | Edit a specific user   |
+| METHOD | URL               | PARAM | BODY            | DESCRIPTION             |
+| ------ | ----------------- | ----- | --------------- | ----------------------- |
+| GET    | '/userId'         | id    | n\a             | Gets a specific user    |
+| DELETE | '/userId'         | id    | n\a             | Delete a specific user  |
+| PATCH  | '/userId'         | id    | all description | Edit a specific user    |
+| GET    | '/userId/reserve' | id    | n\a             | Gets a specific reserva |
 
 > 'http://localhost:5005/api/dish' => DISH
 
@@ -75,7 +76,6 @@ Made in:
 | METHOD | URL                  | PARAM | BODY            | DESCRIPTION               |
 | ------ | -------------------- | ----- | --------------- | ------------------------- |
 | GET    | '/'                  | n\a   | n\a             | Get all reservas          |
-| GET    | '/reservaId'         | id    | n\a             | Gets a specific reserva   |
 | DELETE | '/reservaId'         | id    | n\a             | Delete a specific reserva |
 | PATCH  | '/reservaId'         | id    | all description | Edit a specific reserva   |
 | POST   | '/reservaId/comment' | id    | all description | Create a new comment      |

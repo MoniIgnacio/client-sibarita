@@ -4,8 +4,8 @@ const getAllReservasService = () => {
   return service.get("/reserva/");
 };
 
-const getReservaService = (reservaId) => {
-  return service.get(`/reserva/${reservaId}`);
+const getReservaService = (userId) => {
+  return service.get(`/user/${userId}/reserve`);
 };
 
 const deleteReservaService = (reservaId) => {
@@ -17,12 +17,12 @@ const editReservaService = (reservaId) => {
 };
 
 const newCommentService = (reservaId) => {
-    return service.post(`/reserva/${reservaId}/comment`);
-  };
+  return service.post(`/reserva/${reservaId}/comment`);
+};
 export {
   getAllReservasService,
   getReservaService,
   deleteReservaService,
   editReservaService,
-  newCommentService
+  newCommentService,
 };
