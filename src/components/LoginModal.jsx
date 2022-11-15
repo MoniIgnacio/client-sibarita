@@ -8,9 +8,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 function LoginModal() {
-  const { authenticaUser } = useContext(AuthContext);
+  const { authenticaUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,15 +36,12 @@ function LoginModal() {
 
       authenticaUser();
       //!Cambiar navigate
-      navigate("/profile");
+      navigate(`/`);
     } catch (error) {
-      // console.log(error.response.status)
-      // console.log(error.response.data.errorMessage)
+     
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }

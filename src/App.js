@@ -11,6 +11,7 @@ import RestaurantDetails from "./pages/RestaurantDetails";
 import Footer from "./components/Footer";
 import Cartamodal from "./components/CartaModal";
 import RestaurantEdit from "./pages/RestaurantEdit";
+import ClientProfile from "./pages/ClientProfile";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/restaurant/:restId" element={<RestaurantDetails/>}/>
         <Route path="/restaurant/:restId/edit" element={<RestaurantEdit/>}/>
         <Route path="/restaurant/:restId/dish" element={<Cartamodal/>}/>
+        <Route path="/user/:userId" element={<ClientProfile/>} />
 
 
         {/* Errores */}
