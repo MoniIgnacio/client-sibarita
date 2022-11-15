@@ -32,26 +32,22 @@ function AllRestaurants() {
 
   return (
     <div>
-      modal de todos los restaurantes con su informacion imagen
       {list.map((eachRestaurant) => {
         return (
           <Row xs={1} md={2} className="g-4">
             {Array.from({ length: 4 }).map((_, idx) => (
               <Col>
                 <Card>
-                  <Card.Img variant="top" src={eachRestaurant.photos} />
+                  <img variant="top" src={eachRestaurant.photos} alt='img-restaurant' width={'100px'}/>
                   <Card.Title>{eachRestaurant.name}</Card.Title>
                   <Card.Body>
                     <Card.Text key={eachRestaurant._id}>
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      {eachRestaurant.location}
                     </Card.Text>
-                    <Button variant="primary">
                       {" "}
                       <Link to={`/restaurant/${eachRestaurant._id}`}>
                         Más información
                       </Link>
-                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
