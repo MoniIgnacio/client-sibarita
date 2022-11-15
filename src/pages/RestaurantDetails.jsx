@@ -4,6 +4,7 @@ import { getRestaurantService } from "../services/restaurant.services";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import RestaurantEdit from "./RestaurantEdit";
 import AllDishesModal from "./AllDishesModal";
+import ReservaModal from "../components/ReservaModal";
 
 function RestaurantDetails() {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ function RestaurantDetails() {
       <h6>{details.owner}</h6>
       <RestaurantEdit />
       <AllDishesModal />
-
+      <ReservaModal/>
     </div>
   );
 }

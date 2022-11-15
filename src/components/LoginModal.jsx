@@ -8,9 +8,8 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 function LoginModal() {
-  const { authenticaUser } = useContext(AuthContext);
+  const { authenticaUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -37,8 +36,9 @@ function LoginModal() {
 
       authenticaUser();
       //!Cambiar navigate
-      navigate("/profile");
+      navigate(`/`);
     } catch (error) {
+     
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
       } else {
