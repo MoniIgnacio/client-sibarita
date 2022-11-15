@@ -1,10 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getUserService, editUserService } from "../services/user.services";
+import { getReservaService, editReservaService } from "../services/reserva.services";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import Table from 'react-bootstrap/Table';
 import DeleteUserModal from "../components/DeleteUserModal";
 
 function ClientProfile() {
@@ -22,10 +24,10 @@ function ClientProfile() {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    getData();
+    getDataUser();
   }, []);
 
-  const getData = async () => {
+  const getDataUser = async () => {
     try {
       const response = await getUserService(userId);
       const { data } = response;
@@ -63,12 +65,12 @@ function ClientProfile() {
       <h4>Número de telefono: {phoneNumber}</h4>
       <h4>Dirección de correo:{email}</h4>
       <Button variant="primary" onClick={handleShow}>
-        Edit Information
+        Editar perfil
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit information</Modal.Title>
+          <Modal.Title>Editar perfil</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {" "}
@@ -126,6 +128,27 @@ function ClientProfile() {
           <DeleteUserModal/>
         </Modal.Footer>
       </Modal>
+
+      <div style={{width: "30vw", marginLeft: "20px"}}>
+      <Table striped>
+      <thead>
+        <tr>
+          <th>Restaurante</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Pax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+      </tbody>
+    </Table>
+      </div>
     </div>
   );
 }
