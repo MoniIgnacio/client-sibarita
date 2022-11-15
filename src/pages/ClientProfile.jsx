@@ -15,6 +15,9 @@ function ClientProfile() {
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [reservations, setReservations] = useState("")
+  const [isFetching, setIsFetching] = useState(true);
+
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -39,6 +42,17 @@ function ClientProfile() {
     }
   };
 
+
+  const getReservationList = async () => {
+    try {
+      let response = await getReservaService(userId)
+      setReservations(response.data)
+      setIsFetching(false)
+
+    } catch (error) {
+      navigate("/error")
+    }
+  }
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -139,14 +153,18 @@ function ClientProfile() {
           <th>Pax</th>
         </tr>
       </thead>
-      <tbody>
+      {reservations.map((eachReservation) => {
+        return ( 
+          <tbody>
         <tr>
-          <td>1</td>
-          <td>Mark</td>
+          <td>{eachReservation.restaurant}</td>
+          <td>{eachReservation.fecha}</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
-      </tbody>
+      </tbody>)
+      })}
+     
     </Table>
       </div>
     </div>
