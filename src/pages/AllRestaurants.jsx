@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, Row, Col } from "react-bootstrap";
+import { Card, Row, Col, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllRestaurantsService } from "../services/restaurant.services";
 
@@ -37,7 +37,7 @@ function AllRestaurants() {
       {list.map((eachRestaurant) => {
         return (
             <Col key={eachRestaurant._id}>
-              <Card>
+              <Card style={{ border: '2px solid grey' , borderRadius: '10px'}}>
                 <img
                   variant="top"
                   src={eachRestaurant.photos}
@@ -49,8 +49,8 @@ function AllRestaurants() {
                   <Card.Text key={eachRestaurant._id}>
                    Ubicacion: {eachRestaurant.location}
                   </Card.Text>{" "}
-                  <Link to={`/restaurant/${eachRestaurant._id}`}>
-                    Más información
+                  <Link to={`/restaurant/${eachRestaurant._id}`}><Button>
+                    Más información</Button>
                   </Link>
                 </Card.Body>
               </Card>

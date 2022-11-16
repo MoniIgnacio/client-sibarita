@@ -8,7 +8,7 @@ import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
 
 function RestaurantDetails() {
-  const { user } = useContext(AuthContext);
+  const { user, isLoggedIn } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [details, setDetails] = useState("");
@@ -72,7 +72,7 @@ function RestaurantDetails() {
           <ReservaModal />
           {details !== undefined && 
           <AllDishesModal restaurantDetails={details}/>}
-          {user.user._id === details.owner &&
+          {isLoggedIn === true && user.user._id === details.owner &&
           <RestaurantEdit />}
         </div>
       </div>

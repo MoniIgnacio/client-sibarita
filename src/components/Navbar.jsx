@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { Button } from "react-bootstrap";
 import LoginModal from "./LoginModal";
@@ -7,9 +7,13 @@ import LoginModal from "./LoginModal";
 function Navbar() {
   const { authenticaUser, isLoggedIn, setUser, setIsLoggedIn, user } =
     useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticaUser();
+    navigate('/')
+    
   };
 
   return (

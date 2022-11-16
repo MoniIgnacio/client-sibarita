@@ -15,7 +15,7 @@ import { AuthContext } from "../context/auth.context";
 import CartaModal from "../components/CartaModal";
 
 function AllDishesModal(restaurantDetails) {
-  const { user } = useContext(AuthContext);
+  const {isLoggedIn, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { restId } = useParams();
 
@@ -65,7 +65,8 @@ function AllDishesModal(restaurantDetails) {
       entradaDish.push(eachDishCategory);
     }
   });
-
+console.log(restaurantDetails.restaurantDetails)
+console.log(user)
   return (
     <div>
       <>
@@ -85,9 +86,9 @@ function AllDishesModal(restaurantDetails) {
             <Modal.Title> All Dishes</Modal.Title>
           </Modal.Header>
           <div style={{ padding: "20px" }}>
-            {user.user._id === restaurantDetails.restaurantDetails.owner && (
+            {isLoggedIn === true && user.user._id === restaurantDetails.restaurantDetails.owner ? (
               <CartaModal actualizarPage={getList} />
-            )}
+            ): null}
           </div>
           <Modal.Body>
             <Tab.Container
