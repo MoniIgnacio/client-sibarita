@@ -14,6 +14,7 @@ function RestaurantDetails() {
   const [details, setDetails] = useState("");
   const [isFetching, setIsFetching] = useState(true);
   const { restId } = useParams();
+
   useEffect(() => {
     getRestaurant();
   }, []);
@@ -24,7 +25,6 @@ function RestaurantDetails() {
       setDetails(response.data);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
       navigate("/error");
     }
   };
@@ -69,9 +69,12 @@ function RestaurantDetails() {
             paddingTop: "20px",
           }}
         >
-          <ReservaModal />
+          {isLoggedIn === true &&
+          <ReservaModal />}
+
           {details !== undefined && 
           <AllDishesModal restaurantDetails={details}/>}
+          
           {isLoggedIn === true && user.user._id === details.owner &&
           <RestaurantEdit />}
         </div>

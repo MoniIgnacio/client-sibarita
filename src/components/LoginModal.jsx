@@ -35,8 +35,7 @@ function LoginModal() {
       localStorage.setItem("authToken", response.data.authToken);
 
       authenticaUser();
-      //!Cambiar navigate
-      navigate(`/`);
+      handleClose()
     } catch (error) {
      
       if (error.response && error.response.status === 400) {

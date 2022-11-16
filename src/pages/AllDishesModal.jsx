@@ -43,7 +43,6 @@ function AllDishesModal(restaurantDetails) {
       setList(response.data);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
       navigate("/error");
     }
   };
@@ -65,8 +64,7 @@ function AllDishesModal(restaurantDetails) {
       entradaDish.push(eachDishCategory);
     }
   });
-console.log(restaurantDetails.restaurantDetails)
-console.log(user)
+
   return (
     <div>
       <>

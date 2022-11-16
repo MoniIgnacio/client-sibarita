@@ -1,8 +1,8 @@
-import React from "react";
 import { useEffect, useState } from "react";
 import { getUserService } from "../services/user.services";
 import { getReservaService } from "../services/reserva.services";
 import { useNavigate, useParams } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 
 import Table from "react-bootstrap/Table";
 import EditProfileModal from "../components/EditProfileModal";
@@ -50,13 +50,22 @@ function ClientProfile() {
   }
   return (
     <div>
-      <h1>Nombre de usuario: {username}</h1>
-      <h4>Número de telefono: {phoneNumber}</h4>
-      <h4>Dirección de correo:{email}</h4>
-      <EditProfileModal
-        parentSetUserDetails={[setPhoneNumber, setUsername, setEmail]}
-        parentGetUserDetails={[username, phoneNumber, email]}
-      />
+      <div>
+        <Card style={{ width: "100%", paddingTop: '30px' }}>
+          <Card.Body>
+            <Card.Title>Nombre de usuario: {username}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">{email}</Card.Subtitle>
+            <Card.Text>Número de telefono: {phoneNumber}</Card.Text>
+            <Card.Link href="#">
+              {" "}
+              <EditProfileModal
+                parentSetUserDetails={[setPhoneNumber, setUsername, setEmail]}
+                parentGetUserDetails={[username, phoneNumber, email]}
+              />
+            </Card.Link>
+          </Card.Body>
+        </Card>
+      </div>
       <div style={{ width: "30vw", marginLeft: "20px" }}>
         <Table striped>
           <thead>

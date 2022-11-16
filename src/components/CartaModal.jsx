@@ -39,7 +39,7 @@ function Cartamodal(props) {
 
     try {
       await createDishService(newDish, restId);
-      props.actualizarPage()
+      props.actualizarPage();
       handleClose();
     } catch (error) {
       if (error.response && error.response.status === 400) {
