@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import RestaurantEdit from "./RestaurantEdit";
 import AllDishesModal from "./AllDishesModal";
 import ReservaModal from "../components/ReservaModal";
+import Carousel from "react-bootstrap/Carousel";
 
 function RestaurantDetails() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function RestaurantDetails() {
       navigate("/error");
     }
   };
-  
+
   if (isFetching) {
     return <h3>Loading... </h3>;
   }
@@ -33,7 +34,16 @@ function RestaurantDetails() {
   return (
     <div>
       <div id="card">
-            <img src={details.photos} alt="restphoto" width={"300px"} />
+        <Carousel fade>
+          {details.photos.map((eachPhoto, index) => {
+            return (
+              <Carousel.Item key={index}  style={{backgroundColor: 'lightgrey'}}>
+                <img  className="d-block w-100" src={eachPhoto}  alt='restaurant-img' />
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+
         <div className="personal">
           <div className="nameHolder">
             <h1>{details.name}</h1>
@@ -43,20 +53,23 @@ function RestaurantDetails() {
           <h3>Location: {details.location}</h3>
           <h3>Ciusin Type: {details.cuisinType}</h3>
         </div>
-        <div className="info">
-        </div>
+        <div className="info"></div>
         <div className="followers">
           <div>
             <h6> Phone Number: {details.phoneNumber}</h6>
           </div>
-          <div>
-            {/* <h6> Owner: {details.owner}</h6> */}
-          </div>
+          <div>{/* <h6> Owner: {details.owner}</h6> */}</div>
         </div>
-        <div style={{display: 'flex', justifyContent: 'space-around', paddingTop:'20px', }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            paddingTop: "20px",
+          }}
+        >
           <ReservaModal />
           <AllDishesModal />
-          <RestaurantEdit /> 
+          <RestaurantEdit />
         </div>
       </div>
     </div>

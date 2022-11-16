@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card, CardGroup, Button, Row, Col } from "react-bootstrap";
+import { Card, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllRestaurantsService } from "../services/restaurant.services";
 
@@ -31,22 +31,22 @@ function AllRestaurants() {
   }
 
   return (
-    <div>
+    <div style={{padding: '35px'}}>
+          <Row xs={1} md={2} className="g-4">
       {list.map((eachRestaurant) => {
         return (
-          <Row xs={1} md={3} className="g-4">
-            <Col>
+            <Col key={eachRestaurant._id}>
               <Card>
                 <img
                   variant="top"
-                  src={eachRestaurant.photos}
+                  src={eachRestaurant.photos[0]}
                   alt="img-restaurant"
-                  width={"100px"}
+                  // width={"600px"}
                 />
                 <Card.Title>{eachRestaurant.name}</Card.Title>
                 <Card.Body>
                   <Card.Text key={eachRestaurant._id}>
-                    {eachRestaurant.location}
+                   Ubicacion: {eachRestaurant.location}
                   </Card.Text>{" "}
                   <Link to={`/restaurant/${eachRestaurant._id}`}>
                     Más información
@@ -54,9 +54,9 @@ function AllRestaurants() {
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
         );
       })}
+          </Row>
     </div>
   );
 }

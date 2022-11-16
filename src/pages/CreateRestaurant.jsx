@@ -75,7 +75,6 @@ function CreateRestaurant() {
               Nombre del restaurante:{" "}
             </Form.Label>
             <Form.Control
-              id="disabledTextInput"
               type="text"
               name="name"
               value={name}
@@ -88,7 +87,6 @@ function CreateRestaurant() {
               Dirección del restaurante:{" "}
             </Form.Label>
             <Form.Control
-              id="disabledTextInput"
               type="text"
               name="location"
               value={location}
@@ -101,7 +99,6 @@ function CreateRestaurant() {
               Tipo de cocina de tu restaurante
             </Form.Label>
             <Form.Select
-              id="disabledSelect"
               name="cuisinType"
               onChange={handleCuisinTypeChange}
               value={cuisinType}
@@ -118,7 +115,6 @@ function CreateRestaurant() {
               Nº de teléfono del restaurante:
             </Form.Label>
             <Form.Control
-              id="disabledTextInput"
               type="text"
               name="phoneNumber"
               value={phoneNumber}
@@ -131,7 +127,6 @@ function CreateRestaurant() {
               Fotos de tu restaurante
             </Form.Label>
             <Form.Control
-              id="disabledTextInput"
               type="file"
               name="photo"
               onChange={handlePhotoChange}
@@ -139,11 +134,8 @@ function CreateRestaurant() {
           </Form.Group>
           {isUploadingImage === true && <p>... subiendo imagen</p>}
 
-          {imageUrl !== "" ? (
-            <img src={imageUrl} alt="image" width={"100px"} />
-          ) : (
-            <p>selecciona imagen</p>
-          )}
+          {imageUrl !== "" && (
+            <img src={imageUrl} alt="image" width={"100px"} />)}
           {errorMessage !== "" && <p>{errorMessage}</p>}
           <Button type="submit">¡Añade tu restaurante!</Button>
         </fieldset>

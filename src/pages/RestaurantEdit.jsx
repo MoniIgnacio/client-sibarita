@@ -5,9 +5,10 @@ import {
   getRestaurantService,
 } from "../services/restaurant.services";
 import DeleteModalRestaurant from "../components/DeleteModalRestaurant";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
+import {Button, Modal, Form} from "react-bootstrap";
+
+import { uploadImage } from "../services/upload.services";
+
 
 function RestaurantEdit() {
   const navigate = useNavigate();
@@ -15,9 +16,11 @@ function RestaurantEdit() {
 
   const [nameInput, setNameInput] = useState("");
   const [locationInput, setLocationInput] = useState("");
-  const [photosInput, setPhotosInput] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [cuisinTypeInput, setCuisinTypeInput] = useState("");
   const [phoneNumberInput, setPhoneNumberInput] = useState("");
+  const [isUploadingImage, setIsUploadinImage] = useState(false);
+
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -39,7 +42,7 @@ function RestaurantEdit() {
 
       setNameInput(response.data.name);
       setLocationInput(response.data.location);
-      setPhotosInput(response.data.photos);
+      setImageUrl(response.data.photos);
       setCuisinTypeInput(response.data.cuisinType);
       setPhoneNumberInput(response.data.phoneNumber);
     } catch (error) {
@@ -49,7 +52,6 @@ function RestaurantEdit() {
 
   const handleNameChange = (e) => setNameInput(e.target.value);
   const handleLocationChange = (e) => setLocationInput(e.target.value);
-  const handlePhotoChange = (e) => setPhotosInput(e.target.files[0]);
   const handleCuisinTypeChange = (e) => setCuisinTypeInput(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumberInput(e.target.value);
 
@@ -60,13 +62,14 @@ function RestaurantEdit() {
       const updateRestaurant = {
         name: nameInput,
         location: locationInput,
-        photos: photosInput,
+        photos: imageUrl,
         cuisinType: cuisinTypeInput,
         phoneNumber: phoneNumberInput,
       };
 
       await editRestaurantService(updateRestaurant, restId);
       handleClose();
+      console.log(updateRestaurant)
       // navigate(`/restaurant`);
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -76,6 +79,20 @@ function RestaurantEdit() {
         // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
+    }
+  };
+
+  const handlePhotoChange = async (event) => {
+    setIsUploadinImage(true);
+
+    const sendObj = new FormData();
+    sendObj.append("photo", event.target.files[0]);
+    try {
+      const response = await uploadImage(sendObj);
+      setImageUrl(response.data.img);
+      setIsUploadinImage(false);
+    } catch (error) {
+      navigate("/error");
     }
   };
 
@@ -101,7 +118,6 @@ function RestaurantEdit() {
                     Nombre del restaurante:{" "}
                   </Form.Label>
                   <Form.Control
-                    id="disabledTextInput"
                     type="text"
                     name="name"
                     value={nameInput}
@@ -114,7 +130,6 @@ function RestaurantEdit() {
                     Dirección del restaurante:{" "}
                   </Form.Label>
                   <Form.Control
-                    id="disabledTextInput"
                     type="text"
                     name="location"
                     value={locationInput}
@@ -127,7 +142,6 @@ function RestaurantEdit() {
                     Tipo de cocina de tu restaurante
                   </Form.Label>
                   <Form.Select
-                    id="disabledSelect"
                     name="cuisinType"
                     onChange={handleCuisinTypeChange}
                     value={cuisinTypeInput}
@@ -144,7 +158,6 @@ function RestaurantEdit() {
                     Nº de teléfono del restaurante:
                   </Form.Label>
                   <Form.Control
-                    id="disabledTextInput"
                     type="text"
                     name="phoneNumber"
                     value={phoneNumberInput}
@@ -157,7 +170,6 @@ function RestaurantEdit() {
                     Fotos de tu restaurante
                   </Form.Label>
                   <Form.Control
-                    id="disabledTextInput"
                     type="file"
                     name="photo"
                     onChange={handlePhotoChange}
