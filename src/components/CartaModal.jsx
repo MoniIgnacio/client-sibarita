@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 
-function Cartamodal() {
+function Cartamodal(props) {
   const navigate = useNavigate();
   const { restId } = useParams();
 
@@ -39,6 +39,7 @@ function Cartamodal() {
 
     try {
       await createDishService(newDish, restId);
+      props.actualizarPage()
       handleClose();
     } catch (error) {
       if (error.response && error.response.status === 400) {
