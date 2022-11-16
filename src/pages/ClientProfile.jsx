@@ -39,7 +39,6 @@ function ClientProfile() {
     try {
       let response = await getReservaService(userId);
       setReservations(response.data);
-      console.log("Bonjour", response.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
@@ -78,10 +77,6 @@ function ClientProfile() {
                   <td>{eachReservation.hour}</td>
                   <td>{eachReservation.pax}</td>
                   <td>
-                    {" "}
-                    <DeleteReserveModal reservationId={eachReservation._id} />
-                  </td>
-                  {/* <td>
                     <EditReserveModal
                       parentInfo={[
                         eachReservation.fecha,
@@ -90,7 +85,14 @@ function ClientProfile() {
                       ]}
                       parentId={eachReservation._id}
                     />{" "}
-                  </td> */}
+                  </td>
+                  <td>
+                    {" "}
+                    <DeleteReserveModal
+                      reservationId={eachReservation._id}
+                      parentReservation={getReservationList}
+                    />
+                  </td>
                 </tr>
               );
             })}

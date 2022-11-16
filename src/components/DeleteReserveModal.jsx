@@ -4,10 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function DeleteReserveModal({ reservationId }) {
+function DeleteReserveModal({ reservationId, parentReservation }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-  const { userId } = useParams();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,8 +15,7 @@ function DeleteReserveModal({ reservationId }) {
     e.preventDefault();
     try {
       await deleteReservaService(reservationId);
-      handleClose();
-      navigate(`/user/${userId}`);
+      parentReservation();
     } catch (error) {
       navigate("error");
     }
