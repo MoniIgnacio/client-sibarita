@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { getUserService } from "../services/user.services";
 import { getReservaService } from "../services/reserva.services";
-import { getRestaurantService } from "../services/restaurant.services";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Table from "react-bootstrap/Table";
@@ -17,7 +16,6 @@ function ClientProfile() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [reservations, setReservations] = useState("");
-  const [restName, setRestName] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -47,23 +45,6 @@ function ClientProfile() {
       navigate("/error");
     }
   };
-
-  // const reservationRestList = async () => {
-  //   let restId = [];
-  //   try {
-  //     reservations.map((eachReservation) => {
-  //       return restId.push(eachReservation.restaurant);
-  //     });
-  //     restId.map(async (eachId) => {
-  //       let response = await getRestaurantService(eachId);
-  //       // console.log("hola", response.data);
-  //       // setRestName(response.data.name);
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // reservationRestList();
 
   if (isFetching) {
     return <h3>Loading...</h3>;
