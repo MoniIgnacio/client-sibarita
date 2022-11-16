@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getRestaurantService } from "../services/restaurant.services";
 import { useNavigate, useParams } from "react-router-dom";
 import RestaurantEdit from "./RestaurantEdit";
 import AllDishesModal from "./AllDishesModal";
 import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
+import { AuthContext } from "../context/auth.context";
 
 function RestaurantDetails() {
+  const { user } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const [details, setDetails] = useState("");
   const [isFetching, setIsFetching] = useState(true);
@@ -67,8 +70,10 @@ function RestaurantDetails() {
           }}
         >
           <ReservaModal />
-          <AllDishesModal />
-          <RestaurantEdit />
+          {details !== undefined && 
+          <AllDishesModal restaurantDetails={details}/>}
+          {user.user._id === details.owner &&
+          <RestaurantEdit />}
         </div>
       </div>
     </div>

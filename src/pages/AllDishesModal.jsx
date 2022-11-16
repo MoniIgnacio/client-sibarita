@@ -14,9 +14,8 @@ import { AuthContext } from "../context/auth.context";
 
 import CartaModal from "../components/CartaModal";
 
-function AllDishesModal() {
-  const { authenticaUser, isLoggedIn, setUser, setIsLoggedIn, user } =
-    useContext(AuthContext);
+function AllDishesModal(restaurantDetails) {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { restId } = useParams();
 
@@ -52,8 +51,7 @@ function AllDishesModal() {
   if (isFetching) {
     return <h3>Loading... </h3>;
   }
-console.log(user)
-console.log(list)
+
   let entradaDish = [];
   let principalDish = [];
   let postreDish = [];
@@ -87,7 +85,9 @@ console.log(list)
             <Modal.Title> All Dishes</Modal.Title>
           </Modal.Header>
           <div style={{ padding: "20px" }}>
-            <CartaModal actualizarPage={getList} />
+            {user.user._id === restaurantDetails.restaurantDetails.owner && (
+              <CartaModal actualizarPage={getList} />
+            )}
           </div>
           <Modal.Body>
             <Tab.Container
