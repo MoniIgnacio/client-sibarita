@@ -12,8 +12,8 @@ const deleteReservaService = (reservaId) => {
   return service.delete(`/reserva/${reservaId}`);
 };
 
-const editReservaService = (reservaId) => {
-  return service.patch(`/reserva/${reservaId}`);
+const editReservaService = (updateReserve, reservaId) => {
+  return service.patch(`/reserva/${reservaId}`, updateReserve);
 };
 
 const newCommentService = (reservaId) => {

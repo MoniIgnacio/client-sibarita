@@ -40,7 +40,7 @@ function AllRestaurants() {
               <Card>
                 <img
                   variant="top"
-                  src={eachRestaurant.photos[0]}
+                  src={eachRestaurant.photos}
                   alt="img-restaurant"
                   // width={"600px"}
                 />
