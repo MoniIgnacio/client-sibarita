@@ -40,81 +40,88 @@ function Signup() {
 
       navigate("/login");
     } catch (error) {
-      // console.log(error.response.status)
-      // console.log(error.response.data.errorMessage)
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }
   };
 
   return (
-    <div style={{padding: '20vh'}}>
+    <div style={{ padding: "15vh" }}>
       <h1>Sign Up</h1>
 
       <Form onSubmit={handleSignup}>
         <fieldset>
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Nombre de usuario</Form.Label>
-            <Form.Control id="disabledTextInput" type="text"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange} />
+            <Form.Label htmlFor="disabledTextInput">
+              Nombre de usuario
+            </Form.Label>
+            <Form.Control
+              type="text"
+              name="username"
+              value={username}
+              onChange={handleUsernameChange}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">E-mail:</Form.Label>
-            <Form.Control id="disabledTextInput" type="email"
-          name="email"
-          value={email}
-          onChange={handleEmailChange} />
+            <Form.Control
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">Nº de teléfono:</Form.Label>
-            <Form.Control id="disabledTextInput" type="text"
-          name="phoneNumber"
-          value={phoneNumber}
-          onChange={handlePhoneNumberChange} />
+            <Form.Control
+              type="number"
+              name="phoneNumber"
+              value={phoneNumber}
+              onChange={handlePhoneNumberChange}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Label htmlFor="disabledTextInput">Contraseña: </Form.Label>
-            <Form.Control id="disabledTextInput" type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange} />
+            <Form.Control
+              type="password"
+              name="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
           </Form.Group>
 
-          
           <Form.Group className="mb-3">
-            <Form.Label htmlFor="disabledTextInput">Confirmar contraseña: </Form.Label>
-            <Form.Control id="disabledTextInput" type="password"
-          name="password2"
-          value={password2}
-          onChange={handlePassword2Change} />
+            <Form.Label htmlFor="disabledTextInput">
+              Confirmar contraseña:{" "}
+            </Form.Label>
+            <Form.Control
+              type="password"
+              name="password2"
+              value={password2}
+              onChange={handlePassword2Change}
+            />
           </Form.Group>
 
           <Form.Group className="mb-3">
             <Form.Check
+              style={{ display: "flex", justifyContent: "center", gap: "30px" }}
               type="checkbox"
-              id="disabledFieldsetCheck"
               label="¿Tienes un restaurante?"
               name="role"
               value="owner"
               onChange={handleRoleChange}
             />
-        {errorMessage !== "" && <p>{errorMessage}</p>}
+            {errorMessage !== "" && <p>{errorMessage}</p>}
           </Form.Group>
           <Button type="submit">Crear cuenta</Button>
         </fieldset>
       </Form>
-
-      
     </div>
   );
 }

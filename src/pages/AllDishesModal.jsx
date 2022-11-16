@@ -40,7 +40,6 @@ function AllDishesModal() {
       let response = await getAllDishesService(restId);
       setList(response.data);
       setIsFetching(false);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
       navigate("/error");
@@ -50,6 +49,20 @@ function AllDishesModal() {
   if (isFetching) {
     return <h3>Loading... </h3>;
   }
+
+  let entradaDish = [];
+  let principalDish = [];
+  let postreDish = [];
+
+  list.map((eachDishCategory) => {
+    if (eachDishCategory.category === "principal") {
+      principalDish.push(eachDishCategory);
+    } else if (eachDishCategory.category === "postre") {
+      postreDish.push(eachDishCategory);
+    } else {
+      entradaDish.push(eachDishCategory);
+    }
+  });
 
   return (
     <div>
@@ -61,6 +74,7 @@ function AllDishesModal() {
           </Button>
         ))}
         <Modal
+          style={{ padding: "30px 0 30px 0" }}
           show={show}
           fullscreen={fullscreen}
           onHide={() => setShow(false)}
@@ -68,8 +82,9 @@ function AllDishesModal() {
           <Modal.Header closeButton>
             <Modal.Title> All Dishes</Modal.Title>
           </Modal.Header>
-          <br />
-          <CartaModal />
+          <div style={{padding: '20px'}}>
+            <CartaModal />
+          </div>
           <Modal.Body>
             <Tab.Container
               id="list-group-tabs-example"
@@ -93,26 +108,73 @@ function AllDishesModal() {
                   <Tab.Content>
                     <Tab.Pane eventKey="#link1">
                       <ListGroup as="ol" numbered>
-                        {list.map((eachDish) => {
+                        {entradaDish.map((eachEntrada) => {
                           return (
                             <ListGroup.Item
+                              key={eachEntrada._id}
                               as="li"
                               className="d-flex justify-content-between align-items-start"
                             >
                               <div className="ms-2 me-auto">
-                                <div className="fw-bold">{eachDish.title}</div>
-                                {eachDish.description}
+                                <div className="fw-bold">
+                                  {eachEntrada.title}
+                                </div>
+                                {eachEntrada.description}
                               </div>
                               <Badge bg="primary" pill>
-                                $ {eachDish.price}
+                                $ {eachEntrada.price}
                               </Badge>
                             </ListGroup.Item>
                           );
                         })}
                       </ListGroup>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="#link2">otro map</Tab.Pane>
-                    <Tab.Pane eventKey="#link3">map</Tab.Pane>
+                    <Tab.Pane eventKey="#link2">
+                      <ListGroup as="ol" numbered>
+                        {principalDish.map((eachPrincipal) => {
+                          return (
+                            <ListGroup.Item
+                              key={eachPrincipal._id}
+                              as="li"
+                              className="d-flex justify-content-between align-items-start"
+                            >
+                              <div className="ms-2 me-auto">
+                                <div className="fw-bold">
+                                  {eachPrincipal.title}
+                                </div>
+                                {eachPrincipal.description}
+                              </div>
+                              <Badge bg="primary" pill>
+                                $ {eachPrincipal.price}
+                              </Badge>
+                            </ListGroup.Item>
+                          );
+                        })}
+                      </ListGroup>
+                    </Tab.Pane>
+                    <Tab.Pane eventKey="#link3">
+                      <ListGroup as="ol" numbered>
+                        {postreDish.map((eachPostre) => {
+                          return (
+                            <ListGroup.Item
+                              key={eachPostre._id}
+                              as="li"
+                              className="d-flex justify-content-between align-items-start"
+                            >
+                              <div className="ms-2 me-auto">
+                                <div className="fw-bold">
+                                  {eachPostre.title}
+                                </div>
+                                {eachPostre.description}
+                              </div>
+                              <Badge bg="primary" pill>
+                                $ {eachPostre.price}
+                              </Badge>
+                            </ListGroup.Item>
+                          );
+                        })}
+                      </ListGroup>
+                    </Tab.Pane>
                   </Tab.Content>
                 </Col>
               </Row>

@@ -15,7 +15,6 @@ function Cartamodal() {
   const [price, setPrice] = useState(0);
   const [category, setCategory] = useState("principal");
 
-
   // modal states!
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -40,8 +39,7 @@ function Cartamodal() {
 
     try {
       await createDishService(newDish, restId);
-      //!Cambiar navigate
-      navigate("/profile");
+      handleClose();
     } catch (error) {
       if (error.response && error.response.status === 400) {
         // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
@@ -74,7 +72,6 @@ function Cartamodal() {
                       Nombre del plato:
                     </Form.Label>
                     <Form.Control
-                      id="disabledTextInput"
                       type="text"
                       name="title"
                       value={title}
@@ -87,7 +84,6 @@ function Cartamodal() {
                       Descripción del plato:
                     </Form.Label>
                     <Form.Control
-                      id="disabledTextInput"
                       type="text"
                       name="description"
                       value={description}
@@ -98,7 +94,6 @@ function Cartamodal() {
                   <Form.Group className="mb-3">
                     <Form.Label htmlFor="disabledTextInput">Precio:</Form.Label>
                     <Form.Control
-                      id="disabledTextInput"
                       type="number"
                       name="price"
                       value={price}
@@ -111,7 +106,6 @@ function Cartamodal() {
                       Categoría del plato:
                     </Form.Label>
                     <Form.Select
-                      id="disabledSelect"
                       name="category"
                       onChange={handleCategoryChange}
                       value={category}

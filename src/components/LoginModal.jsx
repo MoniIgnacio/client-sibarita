@@ -65,7 +65,6 @@ function LoginModal() {
                 <Form.Group className="mb-3">
                   <Form.Label htmlFor="disabledTextInput">E-mail:</Form.Label>
                   <Form.Control
-                    id="disabledTextInput"
                     type="email"
                     name="email"
                     value={email}
@@ -78,7 +77,6 @@ function LoginModal() {
                     Contraseña:
                   </Form.Label>
                   <Form.Control
-                    id="disabledTextInput"
                     type="password"
                     name="password"
                     value={password}

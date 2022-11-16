@@ -33,11 +33,10 @@ function CreateRestaurant() {
       cuisinType: cuisinType,
       phoneNumber: phoneNumber,
     };
-    console.log(newRestaurant);
+
     try {
       await createRestaurantService(newRestaurant);
-
-      navigate("/login");
+      navigate("/restaurant");
     } catch (error) {
       // console.log(error.response.data.errorMessage)
       if (error.response && error.response.status === 400) {
@@ -115,7 +114,7 @@ function CreateRestaurant() {
               Nº de teléfono del restaurante:
             </Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               name="phoneNumber"
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
@@ -135,7 +134,8 @@ function CreateRestaurant() {
           {isUploadingImage === true && <p>... subiendo imagen</p>}
 
           {imageUrl !== "" && (
-            <img src={imageUrl} alt="image" width={"100px"} />)}
+            <img src={imageUrl} alt="image" width={"100px"} />
+          )}
           {errorMessage !== "" && <p>{errorMessage}</p>}
           <Button type="submit">¡Añade tu restaurante!</Button>
         </fieldset>
