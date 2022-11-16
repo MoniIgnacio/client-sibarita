@@ -46,6 +46,8 @@ function ClientProfile() {
     }
   };
 
+ 
+
   if (isFetching) {
     return <h3>Loading...</h3>;
   }

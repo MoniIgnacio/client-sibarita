@@ -60,7 +60,4 @@ function AllRestaurants() {
     </div>
   );
 }
-
-{
-}
 export default AllRestaurants;
