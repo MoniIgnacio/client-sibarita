@@ -19,7 +19,6 @@ function RestaurantDetails() {
     try {
       let response = await getRestaurantService(restId);
       setDetails(response.data);
-      console.log("Leyendo data", response.data);
       setIsFetching(false);
     } catch (error) {
       console.log(error);
