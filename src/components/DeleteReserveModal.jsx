@@ -1,9 +1,51 @@
-import React from 'react'
+import { useState, useEffect } from "react";
+import { deleteReservaService } from "../services/reserva.services";
+import { useNavigate, useParams } from "react-router-dom";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
-function DeleteReserveModal() {
+function DeleteReserveModal({ reservationId }) {
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const { userId } = useParams();
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      await deleteReservaService(reservationId);
+      handleClose();
+      navigate(`/user/${userId}`);
+    } catch (error) {
+      navigate("error");
+    }
+  };
+
   return (
-    <div>DeleteReserveModal</div>
-  )
+    <div>
+      <Button variant="danger" onClick={handleShow}>
+        Eliminar
+      </Button>
+      <div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Eliminar la reserva</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>¿Seguro que quieres borrar tu reserva?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              No
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              Sí
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </div>
+  );
 }
 
-export default DeleteReserveModal
+export default DeleteReserveModal;

@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { getUserService } from "../services/user.services";
-import {
-  getReservaService,
-  editReservaService,
-} from "../services/reserva.services";
+import { getReservaService } from "../services/reserva.services";
+import { getRestaurantService } from "../services/restaurant.services";
 import { useNavigate, useParams } from "react-router-dom";
 
 import Table from "react-bootstrap/Table";
 import EditProfileModal from "../components/EditProfileModal";
+import DeleteReserveModal from "../components/DeleteReserveModal";
+import EditReserveModal from "../components/EditReserveModal";
 
 function ClientProfile() {
   const navigate = useNavigate();
@@ -17,6 +17,7 @@ function ClientProfile() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [reservations, setReservations] = useState("");
+  const [restName, setRestName] = useState("");
   const [isFetching, setIsFetching] = useState(true);
 
   useEffect(() => {
@@ -40,11 +41,29 @@ function ClientProfile() {
     try {
       let response = await getReservaService(userId);
       setReservations(response.data);
+      console.log("Bonjour", response.data);
       setIsFetching(false);
     } catch (error) {
       navigate("/error");
     }
   };
+
+  // const reservationRestList = async () => {
+  //   let restId = [];
+  //   try {
+  //     reservations.map((eachReservation) => {
+  //       return restId.push(eachReservation.restaurant);
+  //     });
+  //     restId.map(async (eachId) => {
+  //       let response = await getRestaurantService(eachId);
+  //       // console.log("hola", response.data);
+  //       // setRestName(response.data.name);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // reservationRestList();
 
   if (isFetching) {
     return <h3>Loading...</h3>;
@@ -69,18 +88,32 @@ function ClientProfile() {
             </tr>
           </thead>
 
-          {reservations.map((eachReservation) => {
-            return (
-              <tbody key={eachReservation._id}>
-                <tr>
-                  <td>{eachReservation.restaurant}</td>
+          <tbody>
+            {reservations.map((eachReservation) => {
+              return (
+                <tr key={eachReservation._id}>
+                  <td>{eachReservation.restaurant.name}</td>
                   <td>{eachReservation.fecha}</td>
                   <td>{eachReservation.hour}</td>
                   <td>{eachReservation.pax}</td>
+                  <td>
+                    {" "}
+                    <DeleteReserveModal reservationId={eachReservation._id} />
+                  </td>
+                  {/* <td>
+                    <EditReserveModal
+                      parentInfo={[
+                        eachReservation.fecha,
+                        eachReservation.hour,
+                        eachReservation.pax,
+                      ]}
+                      parentId={eachReservation._id}
+                    />{" "}
+                  </td> */}
                 </tr>
-              </tbody>
-            );
-          })}
+              );
+            })}
+          </tbody>
         </Table>
       </div>
     </div>
