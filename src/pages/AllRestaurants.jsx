@@ -3,6 +3,7 @@ import { Card, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllRestaurantsService } from "../services/restaurant.services";
 
+
 function AllRestaurants() {
   const navigate = useNavigate();
 
@@ -60,4 +61,5 @@ function AllRestaurants() {
     </div>
   );
 }
+
 export default AllRestaurants;
