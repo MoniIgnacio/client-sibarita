@@ -10,7 +10,7 @@ import {Button, Modal, Form} from "react-bootstrap";
 import { uploadImage } from "../services/upload.services";
 
 
-function RestaurantEdit() {
+function RestaurantEdit(props) {
   const navigate = useNavigate();
   const { restId } = useParams();
 
@@ -31,7 +31,6 @@ function RestaurantEdit() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
  
-
   useEffect(() => {
     getData();
   }, []);
@@ -39,7 +38,6 @@ function RestaurantEdit() {
   const getData = async () => {
     try {
       const response = await getRestaurantService(restId);
-
       setNameInput(response.data.name);
       setLocationInput(response.data.location);
       setImageUrl(response.data.photos);
@@ -69,6 +67,8 @@ function RestaurantEdit() {
 
       await editRestaurantService(updateRestaurant, restId);
       handleClose();
+      props.getRestaurant()
+
       // navigate(`/restaurant`);
     } catch (error) {
       if (error.response && error.response.status === 400) {

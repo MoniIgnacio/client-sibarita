@@ -51,9 +51,10 @@ function RestaurantDetails() {
                 style={{ backgroundColor: "lightgrey" }}
               >
                 <img
-                  className="d-block w-100"
+                  // className="d-block w-100"
                   src={eachPhoto}
                   alt="restaurant-img"
+                  width={'450px'}
                 />
               </Carousel.Item>
             );
@@ -87,8 +88,8 @@ function RestaurantDetails() {
             <AllDishesModal restaurantDetails={details} />
           )}
 
-          {isLoggedIn === true && user.user._id === details.owner && (
-            <RestaurantEdit />
+          {(isLoggedIn === true && user.user._id === details.owner) && (
+            <RestaurantEdit getRestaurant={getRestaurant}/>
           )}
           {isLoggedIn === true && user.user._id === details.owner && (
             <RestaurantReservations parentId={restId} />

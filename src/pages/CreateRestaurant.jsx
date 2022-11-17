@@ -134,10 +134,13 @@ function CreateRestaurant() {
           {isUploadingImage === true && <p>... subiendo imagen</p>}
 
           {imageUrl !== "" && (
-            <img src={imageUrl} alt="image" width={"100px"} />
+            <img src={imageUrl} alt="image" width={"250px"} />
           )}
           {errorMessage !== "" && <p>{errorMessage}</p>}
-          <Button type="submit">¡Añade tu restaurante!</Button>
+          {imageUrl === '' ? 
+          <Button type="submit" disabled= 'true'>¡Añade tu restaurante!</Button> :
+          <Button type="submit">¡Añade tu restaurante!</Button> 
+          }
         </fieldset>
       </Form>
     </div>
