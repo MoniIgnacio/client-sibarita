@@ -3,7 +3,7 @@ import { getAllReservasService } from "../services/reserva.services";
 import { useNavigate, useParams } from "react-router-dom";
 import { Table, Modal, Button } from "react-bootstrap";
 import DeleteReserveModal from "./DeleteReserveModal";
-import { MoonLoader } from "react-spinners";
+import MoonLoader from "react-spinners/MoonLoader";
 
 function RestaurantReservations() {
   const navigate = useNavigate();

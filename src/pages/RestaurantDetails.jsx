@@ -55,7 +55,7 @@ function RestaurantDetails() {
                   // className="d-block w-100"
                   src={eachPhoto}
                   alt="restaurant-img"
-                  width={'450px'}
+                  width={'400px'}
                 />
               </Carousel.Item>
             );
