@@ -15,7 +15,12 @@ function ReservaModal() {
   const [errorMessage, setErrorMessage] = useState("");
   const { restId } = useParams();
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setFecha("");
+    setHour("");
+    setPax("");
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
 
   const handleFechaChange = (e) => setFecha(e.target.value);
@@ -34,6 +39,7 @@ function ReservaModal() {
 
     try {
       await createReservaService(newReserve, restId);
+
       handleClose();
     } catch (error) {
       if (error.response && error.response.status === 400) {
@@ -51,7 +57,7 @@ function ReservaModal() {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Cerrar</Modal.Title>
+          <Modal.Title>Haz tu reserva</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {" "}

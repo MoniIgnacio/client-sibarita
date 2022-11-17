@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import DeleteUserModal from "../components/DeleteUserModal";
 import { useNavigate, useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { editUserService } from "../services/user.services";
 
-function EditProfileModal({ getDataUser, parentGetUserDetails }) {
+function EditProfileModal({
+  getDataUser,
+  parentGetUserDetails,
+}) {
   const navigate = useNavigate();
 
   const { userId } = useParams();
