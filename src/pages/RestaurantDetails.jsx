@@ -6,7 +6,6 @@ import AllDishesModal from "../pages/AllDishesModal";
 import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
-import LoginModal from "../components/LoginModal";
 import RestaurantReservations from "../components/RestaurantReservations";
 import { MoonLoader } from "react-spinners";
 
@@ -67,11 +66,11 @@ function RestaurantDetails() {
           </div>
         </div>
         <div className="info">
-          <h3>Location: {details.location}</h3>
-          <h3>Ciusin Type: {details.cuisinType}</h3>
+          <h3>Dirección: {details.location}</h3>
+          <h3>Tipo de cocina: {details.cuisinType}</h3>
         </div>
         <div className="followers">
-            <h2> Phone Number: {details.phoneNumber}</h2>
+            <h2> Número de teléfono: {details.phoneNumber}</h2>
         </div>
         <div
           style={{
