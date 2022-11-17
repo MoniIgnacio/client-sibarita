@@ -1,3 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+body{
+  background-image: url(https://res.cloudinary.com/dbrqv6ypj/image/upload/v1668713007/Sibarita-img/druphfafk9gy8hkfbsdh.jpg);
+background-repeat:round;
+background-attachment: fixed;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer {
+  background: #3586ff;
+}
+
+.social-icon,
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+
+.social-icon__item,
+.menu__item {
+  list-style: none;
+}
+
+.menu__link {
+  color: #fff;
+  transition: 1s;
+  text-decoration: none;
+}
+
+.footer p {
+  color: #fff;
+  margin: 10px 0 0 0;
+}
+
 .App {
   text-align: center;
 }
@@ -24,14 +65,16 @@
 }
 
 #card .nameHolder h1 {
-   font-size: 30px;
+   font-size: 50px;
    margin: 0;
+   color: white;
 }
 
 #card .nameHolder h2 {
    margin: 0;
    font-size: 15px;
-   color: grey;
+   color: white;
+
 }
 
 #card .info {
@@ -39,7 +82,7 @@
    justify-content: space-between;
    padding: 20px 25px;
    font-weight: lighter;
-   color: #3b3a3a;
+   color: white;
    font-size: 20px;
 }
 
@@ -52,6 +95,7 @@
    text-align: center;
    color: #6e6e6e;
    border-top: 1px solid #eaeaea;
+   border-radius: 15px;
 }
 
 #card .followers h2 {

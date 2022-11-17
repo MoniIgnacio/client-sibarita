@@ -34,16 +34,16 @@ function AllRestaurants() {
   }
 //Shows a card for each restaurant showing the photo, name, ad location, plus a button to enter it details
   return (
-    <div style={{ padding: "35px" }}>
+    <div style={{ padding: "35px"}}>
       <Row xs={1} md={2} className="g-4">
         {list.map((eachRestaurant) => {
           return (
             <Col key={eachRestaurant._id}>
-              <Card style={{ border: "2px solid grey", borderRadius: "10px", display: 'flex', alignItems: 'center' }}>
-                <img
+              <Card style={{ border: "2px solid grey", borderRadius: "10px", display: 'flex', alignItems: 'center', backgroundColor:'transparent', color: 'white'}}>
+                <img style={{borderRadius: '10px'}}
                   src={eachRestaurant.photos}
                   alt="img-restaurant"
-                  width={"500px"}
+                  width={"540px"}
 
                 />
                 <Card.Title>{eachRestaurant.name}</Card.Title>
