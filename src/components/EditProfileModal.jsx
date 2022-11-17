@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
@@ -7,7 +6,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { editUserService } from "../services/user.services";
 
-function EditProfileModal({ getDataUser, parentGetUserDetails }) {
+function EditProfileModal({
+  getDataUser,
+  parentGetUserDetails,
+  parentSetUserDetails,
+}) {
   const navigate = useNavigate();
 
   const { userId } = useParams();
@@ -33,6 +36,10 @@ function EditProfileModal({ getDataUser, parentGetUserDetails }) {
         phoneNumber: phoneNumber,
         email: email,
       };
+
+      parentSetUserDetails[0](username);
+      parentSetUserDetails[1](phoneNumber);
+      parentSetUserDetails[2](email);
 
       await editUserService(updateUser, userId);
       handleClose();
