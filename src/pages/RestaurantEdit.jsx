@@ -69,7 +69,6 @@ function RestaurantEdit() {
 
       await editRestaurantService(updateRestaurant, restId);
       handleClose();
-      console.log(updateRestaurant)
       // navigate(`/restaurant`);
     } catch (error) {
       if (error.response && error.response.status === 400) {

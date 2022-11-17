@@ -32,11 +32,9 @@ function ReservaModal() {
       hasConsumed: hasConsumed,
     };
 
-    console.log(newReserve)
-
     try {
       await createReservaService(newReserve, restId);
-      handleClose()
+      handleClose();
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
@@ -89,8 +87,8 @@ function ReservaModal() {
                   id="disabledTextInput"
                   type="number"
                   name="pax"
-                  max= '15'
-                  min= '1'
+                  max="15"
+                  min="1"
                   value={pax}
                   onChange={handlePaxChange}
                 />

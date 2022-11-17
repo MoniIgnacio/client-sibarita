@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { verifyService } from "../services/auth.services";
+import MoonLoader from "react-spinners/MoonLoader";
 
 const AuthContext = createContext();
 
@@ -38,8 +39,8 @@ const AuthWrapper = (props) => {
 
   if (isFetching === true) {
     return (
-      <div className="App">
-        <h3>... Validando al usuario</h3>
+      <div className="spinner">
+        <MoonLoader color="black" size={95} speedMultiplier={0.4} />
       </div>
     );
   }

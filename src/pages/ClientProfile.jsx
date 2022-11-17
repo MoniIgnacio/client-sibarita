@@ -8,6 +8,7 @@ import Table from "react-bootstrap/Table";
 import EditProfileModal from "../components/EditProfileModal";
 import DeleteReserveModal from "../components/DeleteReserveModal";
 import EditReserveModal from "../components/EditReserveModal";
+import { MoonLoader } from "react-spinners";
 
 function ClientProfile() {
   const navigate = useNavigate();
@@ -46,12 +47,16 @@ function ClientProfile() {
   };
 
   if (isFetching) {
-    return <h3>Loading...</h3>;
+    return (
+      <div className="spinner">
+        <MoonLoader color="black" size={95} speedMultiplier={0.4} />
+      </div>
+    );
   }
   return (
     <div>
       <div>
-        <Card style={{ width: "100%", paddingTop: '30px' }}>
+        <Card style={{ width: "100%", paddingTop: "30px" }}>
           <Card.Body>
             <Card.Title>Nombre de usuario: {username}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{email}</Card.Subtitle>
