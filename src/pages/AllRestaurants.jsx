@@ -19,8 +19,6 @@ function AllRestaurants() {
       let response = await getAllRestaurantsService();
       setList(response.data);
       setIsFetching(false);
-
-      console.log(response.data);
     } catch (error) {
       console.log(error);
       navigate("/error");

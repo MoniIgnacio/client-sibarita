@@ -36,8 +36,7 @@ function ReservaModal() {
 
     try {
       await createReservaService(newReserve, restId);
-      //! cambiar navigate a vista detallada del restaurante
-      navigate("/");
+      handleClose()
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
