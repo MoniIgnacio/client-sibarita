@@ -7,7 +7,7 @@ function NotFound() {
       alt="Error-img"
       width={'60%'}
     /> 
-    <h2 style={{display: 'flex', justifyContent: 'center'}}>Error 404! Pagina no encontrada en nuestro proyecto!</h2>
+    <h2 style={{display: 'flex', justifyContent: 'center'}}>Lo sentimos pero esa página no existe</h2>
   </div>
   )
 }

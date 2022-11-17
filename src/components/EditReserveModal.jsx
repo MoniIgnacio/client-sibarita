@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { editReservaService } from "../services/reserva.services";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function EditReserveModal({ parentInfo, parentId, parentReservation }) {
@@ -18,10 +18,10 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
     setFecha(parentInfo[0]);
     setHour(parentInfo[1]);
     setPax(parentInfo[2]);
-  }, []);
+  }, [parentInfo[0]]);
 
   const handleClose = () => setShow(false);
-  
+
   const handleShow = () => setShow(true);
   const handleFechaChange = (e) => setFecha(e.target.value);
   const handleHourChange = (e) => setHour(e.target.value);
@@ -36,16 +36,15 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
         hour: hour,
         pax: pax,
       };
-      parentInfo[0](fecha);
-      parentInfo[1](hour);
-      parentInfo[2](pax);
       await editReservaService(updateReserve, parentId);
       handleClose();
-      parentReservation()
+      parentReservation();
     } catch (error) {
       if (error.response && error.response.status === 400) {
+        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
+        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }
@@ -66,9 +65,7 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
           <Form onSubmit={handleEdit}>
             <fieldset>
               <Form.Group className="mb-3">
-                <Form.Label htmlFor="disabledTextInput">
-                  Fecha:{" "}
-                </Form.Label>
+                <Form.Label htmlFor="disabledTextInput">Fecha: </Form.Label>
                 <Form.Control
                   id="disabledTextInput"
                   type="date"
@@ -79,9 +76,7 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
               </Form.Group>
 
               <Form.Group className="mb-3">
-                <Form.Label htmlFor="disabledTextInput">
-                  Hora:{" "}
-                </Form.Label>
+                <Form.Label htmlFor="disabledTextInput">Hora: </Form.Label>
                 <Form.Control
                   id="disabledTextInput"
                   type="time"
