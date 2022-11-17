@@ -13,9 +13,10 @@ import {
 import { AuthContext } from "../context/auth.context";
 
 import CartaModal from "../components/CartaModal";
+import DeleteDishModal from "../components/DeleteDishModal";
 
 function AllDishesModal(restaurantDetails) {
-  const {isLoggedIn, user } = useContext(AuthContext);
+  const { isLoggedIn, user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { restId } = useParams();
 
@@ -84,9 +85,10 @@ function AllDishesModal(restaurantDetails) {
             <Modal.Title> All Dishes</Modal.Title>
           </Modal.Header>
           <div style={{ padding: "20px" }}>
-            {isLoggedIn === true && user.user._id === restaurantDetails.restaurantDetails.owner ? (
+            {isLoggedIn === true &&
+            user.user._id === restaurantDetails.restaurantDetails.owner ? (
               <CartaModal actualizarPage={getList} />
-            ): null}
+            ) : null}
           </div>
           <Modal.Body>
             <Tab.Container
@@ -127,6 +129,10 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachEntrada.price}
                               </Badge>
+                              <DeleteDishModal
+                                parentGetList={getList}
+                                parentListId={eachEntrada._id}
+                              />
                             </ListGroup.Item>
                           );
                         })}
@@ -150,6 +156,10 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPrincipal.price}
                               </Badge>
+                              <DeleteDishModal
+                                parentGetList={getList}
+                                parentListId={eachPrincipal._id}
+                              />
                             </ListGroup.Item>
                           );
                         })}
@@ -173,6 +183,10 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPostre.price}
                               </Badge>
+                              <DeleteDishModal
+                                parentGetList={getList}
+                                parentListId={eachPostre._id}
+                              />
                             </ListGroup.Item>
                           );
                         })}

@@ -6,6 +6,7 @@ import AllDishesModal from "./AllDishesModal";
 import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
+import LoginModal from "../components/LoginModal"
 
 function RestaurantDetails() {
   const { user, isLoggedIn } = useContext(AuthContext);
@@ -69,8 +70,8 @@ function RestaurantDetails() {
             paddingTop: "20px",
           }}
         >
-          {isLoggedIn === true &&
-          <ReservaModal />}
+          {isLoggedIn === true ?
+          <ReservaModal /> : <div>Para reservar<LoginModal/></div> }
 
           {details !== undefined && 
           <AllDishesModal restaurantDetails={details}/>}
