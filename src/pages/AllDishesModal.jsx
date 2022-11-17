@@ -56,7 +56,6 @@ function AllDishesModal(restaurantDetails) {
       </div>
     );
   }
-
   let entradaDish = [];
   let principalDish = [];
   let postreDish = [];
@@ -131,13 +130,15 @@ function AllDishesModal(restaurantDetails) {
                                 </div>
                                 {eachEntrada.description}
                               </div>
-                              <Badge bg="primary" pill>
+                              <Badge bg="primary" pill style={{padding: '15px'}}>
                                 $ {eachEntrada.price}
                               </Badge>
-                              <DeleteDishModal
-                                parentGetList={getList}
-                                parentListId={eachEntrada._id}
-                              />
+                              {user.user._id === restaurantDetails.owner && (
+                                <DeleteDishModal
+                                  parentGetList={getList}
+                                  parentListId={eachEntrada._id}
+                                />
+                              )}
                             </ListGroup.Item>
                           );
                         })}
@@ -161,10 +162,12 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPrincipal.price}
                               </Badge>
-                              <DeleteDishModal
-                                parentGetList={getList}
-                                parentListId={eachPrincipal._id}
-                              />
+                              {user.user._id === restaurantDetails.owner && (
+                                <DeleteDishModal
+                                  parentGetList={getList}
+                                  parentListId={eachPrincipal._id}
+                                />
+                              )}
                             </ListGroup.Item>
                           );
                         })}
@@ -188,10 +191,12 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPostre.price}
                               </Badge>
-                              <DeleteDishModal
-                                parentGetList={getList}
-                                parentListId={eachPostre._id}
-                              />
+                              {user.user._id === restaurantDetails.owner && (
+                                <DeleteDishModal
+                                  parentGetList={getList}
+                                  parentListId={eachPostre._id}
+                                />
+                              )}
                             </ListGroup.Item>
                           );
                         })}

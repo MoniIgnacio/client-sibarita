@@ -11,7 +11,6 @@ function DeleteDishModal({ parentGetList, parentListId }) {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(parentListId);
 
   const handleDelete = async (e) => {
     e.preventDefault();

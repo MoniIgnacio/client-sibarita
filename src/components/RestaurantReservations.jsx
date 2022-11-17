@@ -3,6 +3,7 @@ import { getAllReservasService } from "../services/reserva.services";
 import { useNavigate, useParams } from "react-router-dom";
 import { Table, Modal, Button } from "react-bootstrap";
 import DeleteReserveModal from "./DeleteReserveModal";
+import MoonLoader from "react-spinners/MoonLoader";
 
 function RestaurantReservations() {
   const navigate = useNavigate();
@@ -30,7 +31,11 @@ function RestaurantReservations() {
     }
   };
   if (isFetching) {
-    return <h3>Loading...</h3>;
+    return (
+      <div className="spinner">
+        <MoonLoader color="black" size={95} speedMultiplier={0.4} />
+      </div>
+    );
   }
   return (
     <div>

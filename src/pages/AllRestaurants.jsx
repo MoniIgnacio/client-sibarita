@@ -43,7 +43,7 @@ function AllRestaurants() {
                 <img
                   src={eachRestaurant.photos}
                   alt="img-restaurant"
-                  width={"450px"}
+                  width={"500px"}
 
                 />
                 <Card.Title>{eachRestaurant.name}</Card.Title>
