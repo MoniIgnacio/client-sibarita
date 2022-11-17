@@ -6,7 +6,7 @@ import { editReservaService } from "../services/reserva.services";
 import { useNavigate} from "react-router-dom";
 import { useState } from "react";
 
-function EditReserveModal({ parentInfo, parentId }) {
+function EditReserveModal({ parentInfo, parentId, parentReservation }) {
   const navigate = useNavigate();
   const [fecha, setFecha] = useState();
   const [hour, setHour] = useState();
@@ -18,14 +18,10 @@ function EditReserveModal({ parentInfo, parentId }) {
     setFecha(parentInfo[0]);
     setHour(parentInfo[1]);
     setPax(parentInfo[2]);
-  }, [parentInfo[0]]);
+  }, []);
 
-  const handleClose = () => {
-    setFecha(parentInfo[0]);
-    setHour(parentInfo[1]);
-    setPax(parentInfo[2]);
-    setShow(false);
-  };
+  const handleClose = () => setShow(false);
+  
   const handleShow = () => setShow(true);
   const handleFechaChange = (e) => setFecha(e.target.value);
   const handleHourChange = (e) => setHour(e.target.value);
@@ -45,6 +41,7 @@ function EditReserveModal({ parentInfo, parentId }) {
       parentInfo[2](pax);
       await editReservaService(updateReserve, parentId);
       handleClose();
+      parentReservation()
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);

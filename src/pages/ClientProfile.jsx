@@ -90,7 +90,7 @@ function ClientProfile() {
                   <td>{eachReservation.fecha}</td>
                   <td>{eachReservation.hour}</td>
                   <td>{eachReservation.pax}</td>
-                  {/* <td>
+                  <td>
                     <EditReserveModal
                       parentInfo={[
                         eachReservation.fecha,
@@ -98,8 +98,9 @@ function ClientProfile() {
                         eachReservation.pax,
                       ]}
                       parentId={eachReservation._id}
+                      parentReservation={getReservationList}
                     />{" "}
-                  </td> */}
+                  </td>
                   <td>
                     {" "}
                     <DeleteReserveModal
