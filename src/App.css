@@ -2,16 +2,11 @@
   text-align: center;
 }
 
-/* .btn, .btn-large, .btn-small {
-    text-decoration: none;
-    color: #fff;
-    background-color: #26a69a;
-    text-align: center;
-    letter-spacing: .5px;
-    -webkit-transition: background-color .2s ease-out;
-    transition: background-color .2s ease-out;
-    cursor: pointer;
-} */
+.spinner{
+   display: flex;
+   justify-content: center;
+   margin-top: 40vh;
+}
 
 .btn, .btn-large, .btn-small, .btn-floating, .btn-large, .btn-small, .btn-flat {
     font-size: 14px;
@@ -21,16 +16,11 @@
 #card {
   font-family: "Segoe UI";
    margin: 12vh auto;
-   border-radius: 5px;
+   border-radius: 10px;
    overflow: hidden;
    width: 550px;
    padding: 20px 25px;
    box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.14)
-}
-
-#card .personal {
-   display: flex;
-   justify-content: center
 }
 
 #card .nameHolder h1 {
@@ -53,37 +43,6 @@
    font-size: 20px;
 }
 
-#card .info span {
-   border-bottom: 1px solid #cbcbcb;
-}
-
-#card .avatar img {
-   border-radius: 40px;
-   width: 60px;
-   height: 60px;
-   border: 5px solid #fff;
-   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-   margin-right: 25px;
-}
-
-#card .skills {
-   margin-bottom: 5px;
-}
-
-#card .skills span {
-   display: inline-block;
-   height: 32px;
-   font-size: 13px;
-   font-weight: 500;
-   color: rgba(0, 0, 0, 0.6);
-   line-height: 32px;
-   padding: 0 12px;
-   border-radius: 16px;
-   background-color: #e4e4e4;
-   margin-bottom: 5px;
-   margin-right: 5px;
-}
-
 #card .followers {
    background-color: #f8f9f9;
    margin: 0px -25px;
@@ -95,48 +54,8 @@
    border-top: 1px solid #eaeaea;
 }
 
-#card .followers h1 {
-   font-weight: lighter;
-   margin: 0;
-   font-size: 15px;
-}
-
 #card .followers h2 {
    margin: 0;
    font-size: 17px;
 }
 
-#card .randomizeButton {
-   display: block;
-   background-color: #64bc7f;
-   text-decoration: none;
-   text-align: center;
-   margin: 0px -25px -15px -25px;
-   line-height: 60px;
-   color: #fff;
-   font-weight: bold;
-   cursor: pointer;
-   -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-}
-
-#card .randomizeButton:hover {
-   background-color: #57aa70;
-}
-
-.animate-change {
-   animation-name: slide-in;
-   animation-duration: 0.3s;
-}
-
-@keyframes slide-in {
-   from {
-      margin-left: -50px;
-      opacity: 0.2;
-   }
-   to {
-      margin-left: 0px;
-      opacity: 1;
-   }
-}

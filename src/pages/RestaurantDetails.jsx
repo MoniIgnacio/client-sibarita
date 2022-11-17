@@ -7,7 +7,11 @@ import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
 import LoginModal from "../components/LoginModal";
+<<<<<<< HEAD
 import RestaurantReservations from "../components/RestaurantReservations";
+=======
+import { MoonLoader } from "react-spinners";
+>>>>>>> fe3a97f7886862b1c5f8088c7e9154568ad6f39e
 
 function RestaurantDetails() {
   const { user, isLoggedIn } = useContext(AuthContext);
@@ -32,7 +36,11 @@ function RestaurantDetails() {
   };
 
   if (isFetching) {
-    return <h3>Loading... </h3>;
+    return (
+      <div className="spinner">
+        <MoonLoader color="black" size={95} speedMultiplier={0.4} />
+      </div>
+    );
   }
 
   return (
@@ -67,7 +75,7 @@ function RestaurantDetails() {
         <div className="info"></div>
         <div className="followers">
           <div>
-            <h6> Phone Number: {details.phoneNumber}</h6>
+            <h2> Phone Number: {details.phoneNumber}</h2>
           </div>
           <div>{/* <h6> Owner: {details.owner}</h6> */}</div>
         </div>

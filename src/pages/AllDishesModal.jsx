@@ -14,6 +14,7 @@ import { AuthContext } from "../context/auth.context";
 
 import CartaModal from "../components/CartaModal";
 import DeleteDishModal from "../components/DeleteDishModal";
+import { MoonLoader } from "react-spinners";
 
 function AllDishesModal(restaurantDetails) {
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -48,8 +49,12 @@ function AllDishesModal(restaurantDetails) {
     }
   };
 
-  if (isFetching) {
-    return <h3>Loading... </h3>;
+  if (isFetching === true) {
+    return (
+      <div className="spinner">
+        <MoonLoader color="black" size={95} speedMultiplier={0.4} />
+      </div>
+    );
   }
 
   let entradaDish = [];
