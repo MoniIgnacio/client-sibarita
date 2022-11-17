@@ -7,11 +7,8 @@ import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
 import LoginModal from "../components/LoginModal";
-<<<<<<< HEAD
-import RestaurantReservations from "../components/RestaurantReservations";
-=======
 import { MoonLoader } from "react-spinners";
->>>>>>> fe3a97f7886862b1c5f8088c7e9154568ad6f39e
+import RestaurantReservations from "../components/RestaurantReservations";
 
 function RestaurantDetails() {
   const { user, isLoggedIn } = useContext(AuthContext);
