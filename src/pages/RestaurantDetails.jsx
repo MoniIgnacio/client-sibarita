@@ -1,12 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { getRestaurantService } from "../services/restaurant.services";
 import { useNavigate, useParams } from "react-router-dom";
-import RestaurantEdit from "./RestaurantEdit";
-import AllDishesModal from "./AllDishesModal";
+import RestaurantEdit from "../pages/RestaurantEdit";
+import AllDishesModal from "../pages/AllDishesModal";
 import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
-import LoginModal from "../components/LoginModal"
+import LoginModal from "../components/LoginModal";
+import RestaurantReservations from "../components/RestaurantReservations";
 
 function RestaurantDetails() {
   const { user, isLoggedIn } = useContext(AuthContext);
@@ -40,8 +41,15 @@ function RestaurantDetails() {
         <Carousel fade>
           {details.photos.map((eachPhoto, index) => {
             return (
-              <Carousel.Item key={index}  style={{backgroundColor: 'lightgrey'}}>
-                <img  className="d-block w-100" src={eachPhoto}  alt='restaurant-img' />
+              <Carousel.Item
+                key={index}
+                style={{ backgroundColor: "lightgrey" }}
+              >
+                <img
+                  className="d-block w-100"
+                  src={eachPhoto}
+                  alt="restaurant-img"
+                />
               </Carousel.Item>
             );
           })}
@@ -70,14 +78,25 @@ function RestaurantDetails() {
             paddingTop: "20px",
           }}
         >
-          {isLoggedIn === true ?
-          <ReservaModal /> : <div>Para reservar<LoginModal/></div> }
+          {isLoggedIn === true ? (
+            <ReservaModal />
+          ) : (
+            <div>
+              Para reservar
+              <LoginModal />
+            </div>
+          )}
 
-          {details !== undefined && 
-          <AllDishesModal restaurantDetails={details}/>}
-          
-          {isLoggedIn === true && user.user._id === details.owner &&
-          <RestaurantEdit />}
+          {details !== undefined && (
+            <AllDishesModal restaurantDetails={details} />
+          )}
+
+          {isLoggedIn === true && user.user._id === details.owner && (
+            <RestaurantEdit />
+          )}
+          {isLoggedIn === true && user.user._id === details.owner && (
+            <RestaurantReservations parentId={restId} />
+          )}
         </div>
       </div>
     </div>
