@@ -12,8 +12,7 @@ function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     authenticaUser();
-    navigate('/')
-    
+    navigate("/");
   };
 
   return (
@@ -27,13 +26,13 @@ function Navbar() {
       }}
     >
       <Link to={"/"}>Home</Link>
-      { isLoggedIn === true && <Link to={`/user/${user.user._id}`}>Perfil</Link>}
-      
-      {isLoggedIn === true ? (
+      {isLoggedIn === true && <Link to={`/user/${user.user._id}`}>Perfil</Link>}
+
+      {isLoggedIn === true && user.user.role === "owner" && (
         <Link to={"/restaurant/create"}>Crear Restaurant</Link>
-      ) : (
-        <Link to={"/signup"}>Regístrate</Link>
       )}
+
+      {isLoggedIn === false && <Link to={"/signup"}>Regístrate</Link>}
 
       <Link to={"/restaurant/"}>All restaurants</Link>
 

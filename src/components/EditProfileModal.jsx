@@ -18,7 +18,15 @@ function EditProfileModal({ getDataUser, parentGetUserDetails }) {
 
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
+  useEffect(() => {
+    setUsername(parentGetUserDetails[0]);
+    setPhoneNumber(parentGetUserDetails[1]);
+    setEmail(parentGetUserDetails[2]);
+  }, [parentGetUserDetails[0]]);
+
+  const handleClose = () => {
+    setShow(false);
+  };
   const handleShow = () => setShow(true);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
@@ -33,10 +41,10 @@ function EditProfileModal({ getDataUser, parentGetUserDetails }) {
         phoneNumber: phoneNumber,
         email: email,
       };
-
+ 
       await editUserService(updateUser, userId);
       handleClose();
-      getDataUser();
+      getDataUser()
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);
