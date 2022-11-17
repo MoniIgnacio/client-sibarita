@@ -1,15 +1,15 @@
 import service from "./config.services";
 
-const getDishService = (restaurantId) => {
-  return service.get(`/dish/${restaurantId}`);
+const getDishService = (dishId) => {
+  return service.get(`/dish/${dishId}`);
 };
 
-const deleteDishService = (restaurantId) => {
-  return service.delete(`/dish/${restaurantId}`);
+const deleteDishService = (dishId) => {
+  return service.delete(`/dish/${dishId}`);
 };
 
-const editDishService = (restaurantId) => {
-  return service.patch(`/dish/${restaurantId}`);
+const editDishService = (dishId) => {
+  return service.patch(`/dish/${dishId}`);
 };
 
 export {

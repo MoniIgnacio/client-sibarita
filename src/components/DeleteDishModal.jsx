@@ -1,21 +1,24 @@
-import { useState, useEffect } from "react";
-import { deleteReservaService } from "../services/reserva.services";
-import { useNavigate, useParams } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
+import { deleteDishService } from "../services/dish.services";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function DeleteReserveModal({ reservationId, parentReservation }) {
+function DeleteDishModal({ parentGetList, parentListId }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  console.log(parentListId);
 
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      await deleteReservaService(reservationId);
-      parentReservation();
+      await deleteDishService(parentListId);
+      parentGetList();
+      handleClose();
     } catch (error) {
       navigate("/error");
     }
@@ -29,9 +32,9 @@ function DeleteReserveModal({ reservationId, parentReservation }) {
       <div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Eliminar la reserva</Modal.Title>
+            <Modal.Title>Eliminar </Modal.Title>
           </Modal.Header>
-          <Modal.Body>¿Seguro que quieres borrar tu reserva?</Modal.Body>
+          <Modal.Body>¿Seguro que quieres borrar este plato?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               No
@@ -46,4 +49,4 @@ function DeleteReserveModal({ reservationId, parentReservation }) {
   );
 }
 
-export default DeleteReserveModal;
+export default DeleteDishModal;
