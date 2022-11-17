@@ -5,10 +5,9 @@ import {
   getRestaurantService,
 } from "../services/restaurant.services";
 import DeleteModalRestaurant from "../components/DeleteModalRestaurant";
-import {Button, Modal, Form} from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 
 import { uploadImage } from "../services/upload.services";
-
 
 function RestaurantEdit(props) {
   const navigate = useNavigate();
@@ -21,20 +20,18 @@ function RestaurantEdit(props) {
   const [phoneNumberInput, setPhoneNumberInput] = useState("");
   const [isUploadingImage, setIsUploadinImage] = useState(false);
 
-
   const [errorMessage, setErrorMessage] = useState("");
 
   // modal states!
   const [show, setShow] = useState(false);
- 
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- 
+
   useEffect(() => {
     getData();
   }, []);
-
+  //gets all the data for the restaurant, shows on the input fields the current information just in case you just want to change one field
   const getData = async () => {
     try {
       const response = await getRestaurantService(restId);
@@ -47,12 +44,12 @@ function RestaurantEdit(props) {
       navigate("/error");
     }
   };
-
+//keeps an eye of what you place in the input fields to change the state
   const handleNameChange = (e) => setNameInput(e.target.value);
   const handleLocationChange = (e) => setLocationInput(e.target.value);
   const handleCuisinTypeChange = (e) => setCuisinTypeInput(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumberInput(e.target.value);
-
+//handles the edition of the restaurant information, closes the modal and autoupdates the information so you dont have to refresh manually
   const handleEdit = async (e) => {
     e.preventDefault();
 
@@ -67,20 +64,16 @@ function RestaurantEdit(props) {
 
       await editRestaurantService(updateRestaurant, restId);
       handleClose();
-      props.getRestaurant()
-
-      // navigate(`/restaurant`);
+      props.getRestaurant();
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }
   };
-
+ //Handles changing the photo of your restaurant (most likely we will need to make some changes to this when you can upload more than one)
   const handlePhotoChange = async (event) => {
     setIsUploadinImage(true);
 
@@ -94,8 +87,6 @@ function RestaurantEdit(props) {
       navigate("/error");
     }
   };
-
-
 
   return (
     <div>
@@ -145,10 +136,24 @@ function RestaurantEdit(props) {
                     onChange={handleCuisinTypeChange}
                     value={cuisinTypeInput}
                   >
-                    <option value={"spanish"}>Española</option>
-                    <option value={"italian"}>Italiana</option>
-                    <option value={"japanese"}>Japonesa</option>
-                    <option value={"chinese"}>China</option>
+                    <option value={"Italiana"}>Italiana</option>
+                    <option value={"Española"}>Española</option>
+                    <option value={"Japonesa"}>Japonesa</option>
+                    <option value={"China"}>China</option>
+                    <option value={"Americana"}>Americana</option>
+                    <option value={"Tailandesa"}>Tailandesa</option>
+                    <option value={"Fusión"}>Fusión</option>
+                    <option value={"Griega"}>Griega</option>
+                    <option value={"Marroquí"}>Marroquí</option>
+                    <option value={"Turca"}>Turca</option>
+                    <option value={"India"}>India</option>
+                    <option value={"Parrilla"}>Parrilla</option>
+                    <option value={"Vegetariana"}>Vegetariana</option>
+                    <option value={"Vegana"}>Vegana</option>
+                    <option value={"Pesquetariana"}>Pesquetariana</option>
+                    <option value={"Asiática"}>Asiática</option>
+                    <option value={"Mexicana"}>Mexicana</option>
+                    <option value={"Argentina"}>Argentina</option>
                   </Form.Select>
                 </Form.Group>
 
@@ -186,7 +191,7 @@ function RestaurantEdit(props) {
             <Button variant="primary" onClick={handleEdit}>
               Editar
             </Button>
-            <DeleteModalRestaurant/>
+            <DeleteModalRestaurant />
           </Modal.Footer>
         </Modal>
       </>

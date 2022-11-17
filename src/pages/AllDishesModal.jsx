@@ -38,7 +38,7 @@ function AllDishesModal(restaurantDetails) {
   useEffect(() => {
     getList();
   }, []);
-
+//gets all the dishes from a restaurant passing the id of the restaurant to the service and changes the fetching state to false so the spinner does not show up 
   const getList = async () => {
     try {
       let response = await getAllDishesService(restId);
@@ -49,6 +49,7 @@ function AllDishesModal(restaurantDetails) {
     }
   };
 
+  //A cool spinner when you are waiting for the data to be retrieved
   if (isFetching === true) {
     return (
       <div className="spinner">
@@ -60,7 +61,7 @@ function AllDishesModal(restaurantDetails) {
   let entradaDish = [];
   let principalDish = [];
   let postreDish = [];
-
+//goes through the array of dishes and makes sure each one is pushed to its corresponding category
   list.map((eachDishCategory) => {
     if (eachDishCategory.category === "principal") {
       principalDish.push(eachDishCategory);
@@ -70,7 +71,7 @@ function AllDishesModal(restaurantDetails) {
       entradaDish.push(eachDishCategory);
     }
   });
-
+//shows the list for all the dishes in that restaurant, and if you the owner of said restaurant shows a button to be able to create or delete dishes
   return (
     <div>
       <>

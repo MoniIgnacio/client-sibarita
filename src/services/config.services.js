@@ -1,4 +1,5 @@
 import axios from "axios";
+//routes from the backend to do exactly what their name says
 
 const service = axios.create({
   baseURL: process.env.REACT_APP_SERVER_URL

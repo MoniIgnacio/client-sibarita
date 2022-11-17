@@ -1,4 +1,5 @@
 import service from "./config.services";
+//routes from the backend to do exactly what their name says
 
 const getAllRestaurantsService = () => {
   return service.get("/restaurant/");
@@ -21,7 +22,6 @@ const editRestaurantService = (updateRestaurant,restId) => {
 };
 
 const createReservaService = ( newReserve,restId) => {
-  // console.log(newReserve, restId) da error porque tiene que estar vinculado al id de un restaurante y aun no esta realizada esa funcionalidad
   return service.post(`/restaurant/${restId}/reserva`, newReserve);
 };
 

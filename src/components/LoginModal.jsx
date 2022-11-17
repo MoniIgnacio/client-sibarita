@@ -18,10 +18,10 @@ function LoginModal() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+//keeps an eye of what is being put in the inputs and handle the changes
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-
+//makes the user log-in checking the credentials and generates a token in the localStorage of the user
   const handleLogin = async (e) => {
     e.preventDefault();
 

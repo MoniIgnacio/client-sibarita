@@ -13,18 +13,18 @@ function AllRestaurants() {
   useEffect(() => {
     getList();
   }, []);
-
+//gets all the restaurants that exists on the DB 
   const getList = async () => {
     try {
       let response = await getAllRestaurantsService();
       setList(response.data);
       setIsFetching(false);
     } catch (error) {
-      console.log(error);
       navigate("/error");
     }
   };
 
+  //A cool spinner when you are waiting for the data to be retrieved
   if (isFetching) {
     return (
       <div className="spinner">
@@ -32,7 +32,7 @@ function AllRestaurants() {
       </div>
     );
   }
-
+//Shows a card for each restaurant showing the photo, name, ad location, plus a button to enter it details
   return (
     <div style={{ padding: "35px" }}>
       <Row xs={1} md={2} className="g-4">

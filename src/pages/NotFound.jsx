@@ -1,5 +1,6 @@
 
 function NotFound() {
+  //whenever you are trying to access a non existing route, you get redirected to this page
   return (
     <div>
     <img

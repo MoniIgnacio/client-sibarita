@@ -16,12 +16,12 @@ function CreateRestaurant() {
   const [isUploadingImage, setIsUploadinImage] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
-
+//handles all of the changes (additions) in the input fields for the creation of the restaurant
   const handleNameChange = (e) => setName(e.target.value);
   const handleLocationChange = (e) => setLocation(e.target.value);
   const handleCuisinTypeChange = (e) => setCuisinType(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
-
+//handles the creation of a restaurant
   const handleCreate = async (e) => {
     e.preventDefault();
 
@@ -37,17 +37,15 @@ function CreateRestaurant() {
       await createRestaurantService(newRestaurant);
       navigate("/restaurant");
     } catch (error) {
-      // console.log(error.response.data.errorMessage)
+      
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }
   };
-
+//handles uploading an image through cloudinary for the restaurant, we hope to be able to upload more than 1 image since the carrousel works perfectly fine
   const handlePhotoChange = async (event) => {
     setIsUploadinImage(true);
 
@@ -151,12 +149,13 @@ function CreateRestaurant() {
             <img src={imageUrl} alt="image" width={"250px"} />
           )}
           {errorMessage !== "" && <p>{errorMessage}</p>}
+         {/* Makes sure that you have uploaded an image for your restaurant in order to make usable the button to create the restaurant */}
           {imageUrl === "" ? (
             <Button type="submit" disabled={true}>
               ¡Añade tu restaurante!
             </Button>
           ) : (
-            <Button type="submit">¡Añade tu restaurante!</Button>
+            <Button type="submit">¡Añade tu restaurante!</Button> 
           )}
         </fieldset>
       </Form>

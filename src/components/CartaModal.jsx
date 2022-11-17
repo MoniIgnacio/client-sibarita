@@ -9,7 +9,7 @@ import Modal from "react-bootstrap/Modal";
 function Cartamodal(props) {
   const navigate = useNavigate();
   const { restId } = useParams();
-
+//nned this states to be able to create a dish
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState(0);
@@ -21,12 +21,14 @@ function Cartamodal(props) {
   const handleShow = () => setShow(true);
 
   const [errorMessage, setErrorMessage] = useState("");
-
+ //targets what you place in an input through the events and the functions to change the states
   const handleTitleChange = (e) => setTitle(e.target.value);
   const handleDescriptionChange = (e) => setDescription(e.target.value);
   const handlePriceChange = (e) => setPrice(e.target.value);
   const handleCategoryChange = (e) => setCategory(e.target.value);
-
+//handles the creation of a dish, sets the values for the modal to 0 so when
+//you reopen it does not keep the values of an older dish added
+//renews the information through the prop function that gets the data stored in the modal
   const handleDish = async (e) => {
     e.preventDefault();
 

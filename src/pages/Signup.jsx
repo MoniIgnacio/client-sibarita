@@ -15,14 +15,14 @@ function Signup() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [role, setRole] = useState("client");
   const [errorMessage, setErrorMessage] = useState("");
-
+//tracks the changes being made in the input fields to change the states
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const handlePassword2Change = (e) => setPassword2(e.target.value);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleRoleChange = (e) => setRole(e.target.value);
-
+//handles the creation of an account and redirects you to the view of all the restaurants so you can get started!
   const handleSignup = async (e) => {
     e.preventDefault();
 

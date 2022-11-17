@@ -1,5 +1,6 @@
 
 function Error() {
+  //Whenever you have an error you are redirected to this page, which shows a picture of a burnt chicken and has a funny message :)
   return (
     <div>
       <img

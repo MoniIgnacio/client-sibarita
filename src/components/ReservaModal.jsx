@@ -11,10 +11,11 @@ function ReservaModal() {
   const [fecha, setFecha] = useState("");
   const [hour, setHour] = useState("");
   const [pax, setPax] = useState(1);
-  const [hasConsumed, setHasConsumed] = useState(false);
+  const [hasConsumed, setHasConsumed] = useState(false); //has not been used yet due to lack of time to implement comments, not deleted for a future use
   const [errorMessage, setErrorMessage] = useState("");
   const { restId } = useParams();
   const [show, setShow] = useState(false);
+  //once you close down the reserve modal, does not only hide the modal, but makes sure the input fields for the reserve are empty again
   const handleClose = () => {
     setFecha("");
     setHour("");
@@ -22,11 +23,11 @@ function ReservaModal() {
     setShow(false);
   };
   const handleShow = () => setShow(true);
-
+  //tracks the changes being made on the input fields to change the state
   const handleFechaChange = (e) => setFecha(e.target.value);
   const handleHourChange = (e) => setHour(e.target.value);
   const handlePaxChange = (e) => setPax(e.target.value);
-
+ //Handles the creation of a reservation on a restaurant and once done, closes the modal so you can keep looking at the restaurant details
   const handleReserve = async (e) => {
     e.preventDefault();
 

@@ -9,16 +9,16 @@ function DeleteModalRestaurant() {
   const navigate = useNavigate();
   const { restId } = useParams();
   const [show, setShow] = useState(false);
-
+//handles the modal to show or hide
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+//handles eliminating a restaurant and makes you go back to home
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
       await deleteRestaurantService(restId);
 
-      navigate("/home");
+      navigate("/");
     } catch (error) {
       navigate("/error");
     }

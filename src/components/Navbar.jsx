@@ -25,6 +25,7 @@ function Navbar() {
         height: "50px",
       }}
     >
+    {/* All this cortocircuit or conditionals are used to track if there is a user logged in, or tracks the role of the user in order to show or hide a button */}
       <Link to={"/"}>Home</Link>
       {isLoggedIn === true && <Link to={`/user/${user.user._id}`}>Perfil</Link>}
 

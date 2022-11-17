@@ -23,7 +23,7 @@ function ClientProfile() {
     getDataUser();
     getReservationList();
   }, []);
-
+//gets all the information of the current user logged in the app and shows the data setting them on the state
   const getDataUser = async () => {
     try {
       const response = await getUserService(userId);
@@ -35,7 +35,7 @@ function ClientProfile() {
       navigate("/error");
     }
   };
-
+//gets all the reservations that the logged user has done in all the restaurants 
   const getReservationList = async () => {
     try {
       let response = await getReservaService(userId);
@@ -46,6 +46,7 @@ function ClientProfile() {
     }
   };
 
+  //A cool spinner when you are waiting for the data to be retrieved
   if (isFetching) {
     return (
       <div className="spinner">

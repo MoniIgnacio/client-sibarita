@@ -11,14 +11,15 @@ function DeleteUserModal() {
   const navigate = useNavigate();
   const { userId } = useParams();
   const [show, setShow] = useState(false);
-
+ //handles the modal to show or hide
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  //makes sure that the token is deleted once you delete the account
   const handleLogout = () => {
     localStorage.removeItem("authToken")
     authenticaUser()
   }
-
+//deletes the user accounts, removes the existing token for that account and sends you back home
   const handleDelete = async (e) => {
     e.preventDefault();
     try {

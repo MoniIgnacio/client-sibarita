@@ -13,7 +13,7 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
   const [pax, setPax] = useState();
   const [errorMessage, setErrorMessage] = useState("");
   const [show, setShow] = useState(false);
-
+  //gets the information that the reserve holds at the moment
   useEffect(() => {
     setFecha(parentInfo[0]);
     setHour(parentInfo[1]);
@@ -21,12 +21,12 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
   }, [parentInfo[0]]);
 
   const handleClose = () => setShow(false);
-
+//handles the changes being made on the input fields and track what is being changed
   const handleShow = () => setShow(true);
   const handleFechaChange = (e) => setFecha(e.target.value);
   const handleHourChange = (e) => setHour(e.target.value);
   const handlePaxChange = (e) => setPax(e.target.value);
-
+//handles the edition of a reserve, and autoupdates through the function to get the reservationdata via passed via props
   const handleEdit = async (e) => {
     e.preventDefault();
 
@@ -41,10 +41,8 @@ function EditReserveModal({ parentInfo, parentId, parentReservation }) {
       parentReservation();
     } catch (error) {
       if (error.response && error.response.status === 400) {
-        // si el error es de tipo 400 me quedo en el componente y muestro el mensaje de error
         setErrorMessage(error.response.data.errorMessage);
       } else {
-        // si el error es otro (500) entonces si redirecciono a /error
         navigate("/error");
       }
     }

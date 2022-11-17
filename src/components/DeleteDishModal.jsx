@@ -8,11 +8,11 @@ import Modal from "react-bootstrap/Modal";
 function DeleteDishModal({ parentGetList, parentListId }) {
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
-
+//handles showing or hiding the modal
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  console.log(parentListId);
 
+//handles the function to delete a dish, and through the passed prop of the function to get the data renews it on the view without needing to refresh
   const handleDelete = async (e) => {
     e.preventDefault();
     try {

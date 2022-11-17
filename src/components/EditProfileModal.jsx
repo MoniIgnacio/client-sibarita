@@ -19,7 +19,7 @@ function EditProfileModal({
   const [errorMessage, setErrorMessage] = useState("");
 
   const [show, setShow] = useState(false);
-
+  //shows the current information of the user on the modal
   useEffect(() => {
     setUsername(parentGetUserDetails[0]);
     setPhoneNumber(parentGetUserDetails[1]);
@@ -29,11 +29,13 @@ function EditProfileModal({
   const handleClose = () => {
     setShow(false);
   };
+  //keeps an eye on the changes someone makes on the input field throught the events and changes the state
   const handleShow = () => setShow(true);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
 
+  //handles the edition of a user profile, autoupdate the information once the user clicks the edit button
   const handleEdit = async (e) => {
     e.preventDefault();
 

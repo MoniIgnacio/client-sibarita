@@ -1,4 +1,5 @@
 import service from "./config.services";
+//routes from the backend to do exactly what their name says
 
 const getAllReservasService = () => {
   return service.get("/reserva/");

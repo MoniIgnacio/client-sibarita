@@ -20,7 +20,7 @@ function RestaurantDetails() {
   useEffect(() => {
     getRestaurant();
   }, []);
-
+//gets all the data for a specific restaurant via the ID of itself
   const getRestaurant = async () => {
     try {
       let response = await getRestaurantService(restId);
@@ -31,6 +31,7 @@ function RestaurantDetails() {
     }
   };
 
+  //A cool spinner when you are waiting for the data to be retrieved
   if (isFetching) {
     return (
       <div className="spinner">
@@ -42,6 +43,7 @@ function RestaurantDetails() {
   return (
     <div>
       <div id="card">
+      {/* Anything better than a nice carousel to show some images? Yes, being able to upload more than one when you have something as cool as this! */}
         <Carousel fade>
           {details.photos.map((eachPhoto, index) => {
             return (
