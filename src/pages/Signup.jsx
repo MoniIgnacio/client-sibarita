@@ -38,7 +38,7 @@ function Signup() {
     try {
       await signupService(newUser);
 
-      navigate("/");
+      navigate("/restaurant");
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);

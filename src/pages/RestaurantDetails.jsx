@@ -7,8 +7,8 @@ import ReservaModal from "../components/ReservaModal";
 import Carousel from "react-bootstrap/Carousel";
 import { AuthContext } from "../context/auth.context";
 import LoginModal from "../components/LoginModal";
-import { MoonLoader } from "react-spinners";
 import RestaurantReservations from "../components/RestaurantReservations";
+import { MoonLoader } from "react-spinners";
 
 function RestaurantDetails() {
   const { user, isLoggedIn } = useContext(AuthContext);
@@ -69,12 +69,8 @@ function RestaurantDetails() {
           <h3>Location: {details.location}</h3>
           <h3>Ciusin Type: {details.cuisinType}</h3>
         </div>
-        <div className="info"></div>
         <div className="followers">
-          <div>
             <h2> Phone Number: {details.phoneNumber}</h2>
-          </div>
-          <div>{/* <h6> Owner: {details.owner}</h6> */}</div>
         </div>
         <div
           style={{
@@ -83,13 +79,8 @@ function RestaurantDetails() {
             paddingTop: "20px",
           }}
         >
-          {isLoggedIn === true ? (
+          {isLoggedIn === true && user.user._id !== details.owner && (
             <ReservaModal />
-          ) : (
-            <div>
-              Para reservar
-              <LoginModal />
-            </div>
           )}
 
           {details !== undefined && (
