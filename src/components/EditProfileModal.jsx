@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 import { editUserService } from "../services/user.services";
 
-function EditProfileModal({ parentSetUserDetails, parentGetUserDetails }) {
+function EditProfileModal({ getDataUser, parentGetUserDetails }) {
   const navigate = useNavigate();
 
   const { userId } = useParams();
@@ -17,18 +17,8 @@ function EditProfileModal({ parentSetUserDetails, parentGetUserDetails }) {
   const [errorMessage, setErrorMessage] = useState("");
 
   const [show, setShow] = useState(false);
-  useEffect(() => {
-    setUsername(parentGetUserDetails[0])
-    setPhoneNumber(parentGetUserDetails[1])
-    setEmail(parentGetUserDetails[2])
-  },[parentGetUserDetails[0]])
 
-  const handleClose = () => {
-     setUsername(parentGetUserDetails[0])
-    setPhoneNumber(parentGetUserDetails[1])
-    setEmail(parentGetUserDetails[2])
-    setShow(false)
-}
+  const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
@@ -43,11 +33,10 @@ function EditProfileModal({ parentSetUserDetails, parentGetUserDetails }) {
         phoneNumber: phoneNumber,
         email: email,
       };
-      parentSetUserDetails[0](phoneNumber);
-      parentSetUserDetails[1](username);
-      parentSetUserDetails[2](email);
+
       await editUserService(updateUser, userId);
       handleClose();
+      getDataUser();
     } catch (error) {
       if (error.response && error.response.status === 400) {
         setErrorMessage(error.response.data.errorMessage);

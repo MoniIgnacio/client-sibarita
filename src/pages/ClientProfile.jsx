@@ -64,8 +64,8 @@ function ClientProfile() {
             <Card.Link href="#">
               {" "}
               <EditProfileModal
-                parentSetUserDetails={[setPhoneNumber, setUsername, setEmail]}
                 parentGetUserDetails={[username, phoneNumber, email]}
+                getDataUser={getDataUser}
               />
             </Card.Link>
           </Card.Body>
