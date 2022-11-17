@@ -11,7 +11,7 @@ function CreateRestaurant() {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [cuisinType, setCuisinType] = useState("spanish");
+  const [cuisinType, setCuisinType] = useState("Española");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [isUploadingImage, setIsUploadinImage] = useState(false);
 
@@ -101,10 +101,25 @@ function CreateRestaurant() {
               onChange={handleCuisinTypeChange}
               value={cuisinType}
             >
-              <option value={"spanish"}>Española</option>
-              <option value={"italian"}>Italiana</option>
-              <option value={"japanese"}>Japonesa</option>
-              <option value={"chinese"}>China</option>
+              {" "}
+              <option value={"Italiana"}>Italiana</option>
+              <option value={"Española"}>Española</option>
+              <option value={"Japonesa"}>Japonesa</option>
+              <option value={"China"}>China</option>
+              <option value={"Americana"}>Americana</option>
+              <option value={"Tailandesa"}>Tailandesa</option>
+              <option value={"Fusión"}>Fusión</option>
+              <option value={"Griega"}>Griega</option>
+              <option value={"Marroquí"}>Marroquí</option>
+              <option value={"Turca"}>Turca</option>
+              <option value={"India"}>India</option>
+              <option value={"Parrilla"}>Parrilla</option>
+              <option value={"Vegetariana"}>Vegetariana</option>
+              <option value={"Vegana"}>Vegana</option>
+              <option value={"Pesquetariana"}>Pesquetariana</option>
+              <option value={"Asiática"}>Asiática</option>
+              <option value={"Mexicana"}>Mexicana</option>
+              <option value={"Argentina"}>Argentina</option>
             </Form.Select>
           </Form.Group>
 
@@ -136,10 +151,13 @@ function CreateRestaurant() {
             <img src={imageUrl} alt="image" width={"250px"} />
           )}
           {errorMessage !== "" && <p>{errorMessage}</p>}
-          {imageUrl === '' ? 
-          <Button type="submit" disabled= 'true'>¡Añade tu restaurante!</Button> :
-          <Button type="submit">¡Añade tu restaurante!</Button> 
-          }
+          {imageUrl === "" ? (
+            <Button type="submit" disabled={true}>
+              ¡Añade tu restaurante!
+            </Button>
+          ) : (
+            <Button type="submit">¡Añade tu restaurante!</Button>
+          )}
         </fieldset>
       </Form>
     </div>
