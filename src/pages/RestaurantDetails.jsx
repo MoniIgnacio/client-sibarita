@@ -30,7 +30,6 @@ function RestaurantDetails() {
       navigate("/error");
     }
   };
-
   //A cool spinner when you are waiting for the data to be retrieved
   if (isFetching) {
     return (
@@ -85,10 +84,10 @@ function RestaurantDetails() {
             <ReservaModal />
           )}
 
-          {details !== undefined && (
+          {/* {details !== undefined && (
             <AllDishesModal restaurantDetails={details} />
-          )}
-
+          )} */}
+          <AllDishesModal restaurantDetails={details} />
           {(isLoggedIn === true && user.user._id === details.owner) && (
             <RestaurantEdit getRestaurant={getRestaurant}/>
           )}
