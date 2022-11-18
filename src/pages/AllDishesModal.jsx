@@ -57,6 +57,8 @@ function AllDishesModal(restaurantDetails) {
       </div>
     );
   }
+  console.log("hallo",restaurantDetails)
+  console.log("Bonjour",user.user._id);
   let entradaDish = [];
   let principalDish = [];
   let postreDish = [];
@@ -134,12 +136,12 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill style={{padding: '15px'}}>
                                 $ {eachEntrada.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.owner && (
+                              {user.user._id === restaurantDetails.owner ? (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachEntrada._id}
                                 />
-                              )}
+                              ) : null}
                             </ListGroup.Item>
                           );
                         })}
