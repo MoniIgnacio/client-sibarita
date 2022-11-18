@@ -1,30 +1,54 @@
-# Sibarita
+# El Sibarita
 
-## _slogan_
+## _Para los autenticos amantes de la comida._
 
-[![... imagen](./public/images/index-background.jpg)](https://img.cyclic.app/)
+[![(El Sibarita)](https://res.cloudinary.com/dbrqv6ypj/image/upload/v1668769008/Sibarita-img/wq7ue7wkxr3zmrbde14a.png)](https://sibarita.netlify.app/)
+
+---
 
 Made in:
 
 - [React]
 - [Javascript]
 - [React Bootstrap]
+- [Jwt Token]
+- [Regexr]
 - [Mongoose]
 - [Node.js]
 - [Express]
 - [Cloudinary]
+- [Axios]
+
+---
 
 ## ✨ About Us ✨
 
 > Hi! We are [Ignacio MONI] and [Jelle MANZANO HAAGSMA] ...
 
+---
+
 ## Description
 
+This aplication ....
 
+---
 
-## MVP
+## User Stories
 
+---
 
+- 404: As an anon/user I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault
+- Signup: As an anon I can sign up in the platform so that I can start creating and managing my backlog
+- Login: As a user I can login to the platform so that I can start creating and managing my backlog
+- Logout: As a user I can logout from the platform so no one else can modify my information
+- Toogle media As a user I can toogle between different types of media
+- Add elements As a user I can add elements to my backlog
+- Delete elements As a user I can delete elements from my backlog
+- Mark elements As a user I can mark elements in my backlog as done
+- Random element As a user I can get a random element from my backlog
+- Check profile As a user I can check my profile and stats
+
+---
 
 ## Data Structure Server
 
@@ -84,21 +108,112 @@ Made in:
 | PATCH  | '/reservaId'         | id    | all description | Edit a specific reserva   |
 | POST   | '/reservaId/comment' | id    | all description | Create a new comment      |
 
+> 'http://localhost:5005/api/upload' => UPLOAD
+
+| METHOD | URL | PARAM | BODY  | DESCRIPTION  |
+| ------ | --- | ----- | ----- | ------------ |
+| GET    | '/' | n\a   | image | Upload Image |
+
 ## Data Structure Client
 
-| ROUTE                      | BODY            | DESCRIPTION                  |
-| -------------------------- | --------------- | ---------------------------- |
+| ROUTE                      | BODY            | DESCRIPTION                  | BEHAVIOR |
+| -------------------------- | --------------- | ---------------------------- | -------- |
 | '/restaurants'             | n\a             | Get all restaurants          |
 | '/restaurants'             | all description | Create a new restaurant      |
 | '/restaurant/restaurantID' | n\a             | Gets a specific restaurant   |
 | '/restaurant/restaurantID' | n\a             | Delete a specific restaurant |
 | '/restaurant'              | all description | Edit a specific restaurant   |
 
+---
+
+## Services
+
+- Auth
+- Comment
+- Config
+- Dish
+- Reserva
+- Restaurant
+- Upload
+- User
+
+---
+
+## Models Backend
+
+User
+
+```sh
+{
+   email: {type: String, required: [true, "Email is required."], unique: true, lowercase: true, trim: true},
+   password: {type: String, required: [true, "Password is required."]},
+   password2: {type: String},
+   username: {type: String, required: true, trim: true},
+   role: {type: String, enum: ["client", "owner", "admin"], default: "client"},
+   phoneNumber: {type: Number, required: true}
+}
+```
+
+Comment
+
+```sh
+{
+  comment: {type: String, required: true, trim: true},
+  photo: String,
+  serviceScore: {type: Number, required: true},
+  foodScore: {type: Number, required: true},
+  ambientScore: {type: Number, required: true},
+  user: [{type: Schema.Types.ObjectId, ref: "User"}],
+  restaurant: [{type: Schema.Types.ObjectId, ref: "Restaurant"}]
+}
+```
+
+Restaurant
+
+```sh
+{
+  name: {type: String, required: true, trim: true},
+  location: {type: String, required: true, trim: true},
+  photos: [String],
+  cuisinType: {type: String, required: true, enum: ["Italiana", "Española","Japonesa", "China"...], default: "Argentina"},
+  phoneNumber: {type: Number, required: true},
+  owner: {type: Schema.Types.ObjectId, ref: "User"}}
+```
+
+Reserva
+
+```sh
+{
+  fecha: {required: true, type: String},
+  hour: {required: true, type: String},
+  pax: {required: true, type: Number, trim: true},
+  hasConsumed: {type: Boolean, default: false},
+  restaurant:{ type: Schema.Types.ObjectId, ref: "Restaurant"},
+  whoReserved:{type: Schema.Types.ObjectId, ref: "User"}
+    }
+```
+
+Dish
+
+```sh
+{
+  title: {type: String, required: true, trim: true},
+  description: {type: String, trim: true},
+  price: {type: Number, required: true},
+  category: {type: String, required: true, enum: ["entrante", "principal", "postre"], default: "principal"},
+  restaurant: {type: Schema.Types.ObjectId, ref: "Restaurant"},
+}
+```
+
+---
+
 ## Installation
 
 El Sibarita requires [Node.js](https://nodejs.org/) v10+ to run.
 
 Install the dependencies and devDependencies and start the server.
+
+[Server Code] --- [Client Code]
 
 ```sh
 cd server-sibarita/client-sibarita
@@ -112,17 +227,26 @@ For production environments...
 npm start
 ```
 
+---
+
 | El Sibarita | Contributions                   |
 | ----------- | ------------------------------- |
 |             | https://github.com/JelleManzano |
 |             | https://github.com/MoniIgnacio  |
 
-[React]: https://reactjs.org/
-[Javascript]: https://www.javascript.com/
-[React Bootstrap]: https://react-bootstrap.github.io/
-[Mongoose]: https://mongoosejs.com/
-[Node.js]: http://nodejs.org
-[Express]: http://expressjs.com
-[Cloudinary]: https://cloudinary.com/
-[Ignacio MONI]: https://www.linkedin.com/in/moniignacio02/
-[Jelle MANZANO HAAGSMA]: https://www.linkedin.com/in/jelle-manzano-haagsma-6a6785189/
+---
+
+[react]: https://reactjs.org/
+[javascript]: https://www.javascript.com/
+[react bootstrap]: https://react-bootstrap.github.io/
+[mongoose]: https://mongoosejs.com/
+[node.js]: http://nodejs.org
+[express]: http://expressjs.com
+[cloudinary]: https://cloudinary.com/
+[regexr]: https://regexr.com/
+[jwt token]: https://jwt.io/
+[server code]: https://github.com/MoniIgnacio/server-sibarita
+[client code]: https://github.com/MoniIgnacio/client-sibarita
+[axios]: https://www.npmjs.com/package/axios
+[ignacio moni]: https://www.linkedin.com/in/moniignacio02/
+[jelle manzano haagsma]: https://www.linkedin.com/in/jelle-manzano-haagsma-6a6785189/
