@@ -41,7 +41,7 @@ function AllRestaurants() {
             <Col key={eachRestaurant._id}>
               <Card style={{ border: "2px solid grey", borderRadius: "40px", display: 'flex', alignItems: 'center', backgroundColor:'lightgrey', color: 'black'}}>
                 <img style={{borderRadius: '10px'}}
-                  src={eachRestaurant.photos}
+                  src={eachRestaurant.photos[0]}
                   alt="img-restaurant"
                   width={"540px"}
 
