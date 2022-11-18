@@ -29,7 +29,9 @@ Made in:
 
 ## Description
 
-This aplication ....
+This aplication tries to solve the problem for both clients and restaurant owners. What problems you may ask, so how many times have you seen super bad critics on a restaurant
+and the owner tells that that person in particular has never been there? Thats something that El sibarita tries to solve, you can only comment once the restaurant has confirmed
+that you have been at the restaurant (you may reserve beforehand through our app obviously!). With this, the owners do not have to take the risk of having a bad critic from someone that just wants to see the world burn! And also for the clients, they know they can rely on the critics proviced by previous users that went to a said restaurant!.
 
 ---
 
