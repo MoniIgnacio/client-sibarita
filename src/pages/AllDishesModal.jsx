@@ -70,6 +70,7 @@ function AllDishesModal(restaurantDetails) {
       entradaDish.push(eachDishCategory);
     }
   });
+  
 //shows the list for all the dishes in that restaurant, and if you the owner of said restaurant shows a button to be able to create or delete dishes
   return (
     <div>
@@ -134,7 +135,7 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill style={{padding: '15px'}}>
                                 $ {eachEntrada.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.owner && (
+                              {user.user._id === restaurantDetails.restaurantDetails.owner && (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachEntrada._id}
@@ -163,7 +164,7 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPrincipal.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.owner && (
+                              {user.user._id === restaurantDetails.restaurantDetails.owner && (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachPrincipal._id}
@@ -192,7 +193,7 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPostre.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.owner && (
+                              {user.user._id === restaurantDetails.restaurantDetails.owner && (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachPostre._id}

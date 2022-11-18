@@ -2,25 +2,29 @@
 
 ## _slogan_
 
-<!-- [![... imagen](./public/images/index-background.jpg)](https://img.cyclic.app/) -->
+[![... imagen](./public/images/index-background.jpg)](https://img.cyclic.app/)
 
 Made in:
 
-- [JavaScript]
-- [Handlebars]
+- [React]
+- [Javascript]
+- [React Bootstrap]
 - [Mongoose]
-- [Bootstrap]
 - [Node.js]
 - [Express]
 - [Cloudinary]
 
 ## ✨ About Us ✨
 
-> [XXX] and [xxx]
+> Hi! We are [Ignacio MONI] and [Jelle MANZANO HAAGSMA] ...
 
 ## Description
 
+
+
 ## MVP
+
+
 
 ## Data Structure Server
 
@@ -88,11 +92,11 @@ Made in:
 | '/restaurants'             | all description | Create a new restaurant      |
 | '/restaurant/restaurantID' | n\a             | Gets a specific restaurant   |
 | '/restaurant/restaurantID' | n\a             | Delete a specific restaurant |
-| '/restaura'                | all description | Edit a specific restaurant   |
+| '/restaurant'              | all description | Edit a specific restaurant   |
 
 ## Installation
 
-OurHome requires [Node.js](https://nodejs.org/) v10+ to run.
+El Sibarita requires [Node.js](https://nodejs.org/) v10+ to run.
 
 Install the dependencies and devDependencies and start the server.
 
@@ -105,20 +109,20 @@ npm run dev
 For production environments...
 
 ```sh
-npm run start
+npm start
 ```
 
-| Our Home | Contributions                   |
-| -------- | ------------------------------- |
-|          | https://github.com/JelleManzano |
-|          | https://github.com/MoniIgnacio  |
+| El Sibarita | Contributions                   |
+| ----------- | ------------------------------- |
+|             | https://github.com/JelleManzano |
+|             | https://github.com/MoniIgnacio  |
 
-[javascript]: https://www.javascript.com/
-[handlebars]: https://handlebarsjs.com/
-[mongoose]: https://mongoosejs.com/
-[bootstrap]: https://getbootstrap.com/
-[node.js]: http://nodejs.org
-[express]: http://expressjs.com
-[cloudinary]: https://cloudinary.com/
-[ignacio moni]: https://www.linkedin.com/in/moniignacio02/
-[jelle]: https://www.linkedin.com/in/jelle/
+[React]: https://reactjs.org/
+[Javascript]: https://www.javascript.com/
+[React Bootstrap]: https://react-bootstrap.github.io/
+[Mongoose]: https://mongoosejs.com/
+[Node.js]: http://nodejs.org
+[Express]: http://expressjs.com
+[Cloudinary]: https://cloudinary.com/
+[Ignacio MONI]: https://www.linkedin.com/in/moniignacio02/
+[Jelle MANZANO HAAGSMA]: https://www.linkedin.com/in/jelle-manzano-haagsma-6a6785189/
