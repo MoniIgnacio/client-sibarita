@@ -23,7 +23,9 @@ Made in:
 
 ## ✨ About Us ✨
 
-> Hi! We are [Ignacio MONI] and [Jelle MANZANO HAAGSMA] ...
+> Hi! We are [Ignacio MONI] and [Jelle MANZANO HAAGSMA].
+
+-Jelle: a junior fullstack javascript developer, with a solid background in tourism that always had an interest in all that revolves around computer science/programming.
 
 ---
 
