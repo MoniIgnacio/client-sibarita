@@ -114,16 +114,6 @@ This aplication ....
 | ------ | --- | ----- | ----- | ------------ |
 | GET    | '/' | n\a   | image | Upload Image |
 
-## Data Structure Client
-
-| ROUTE                      | BODY            | DESCRIPTION                  | BEHAVIOR |
-| -------------------------- | --------------- | ---------------------------- | -------- |
-| '/restaurants'             | n\a             | Get all restaurants          |
-| '/restaurants'             | all description | Create a new restaurant      |
-| '/restaurant/restaurantID' | n\a             | Gets a specific restaurant   |
-| '/restaurant/restaurantID' | n\a             | Delete a specific restaurant |
-| '/restaurant'              | all description | Edit a specific restaurant   |
-
 ---
 
 ## Services

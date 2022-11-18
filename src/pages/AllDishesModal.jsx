@@ -136,7 +136,7 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill style={{padding: '15px'}}>
                                 $ {eachEntrada.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.restaurantDetails.owner && (
+                              {isLoggedIn === true && user.user._id === restaurantDetails.restaurantDetails.owner && (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachEntrada._id}
@@ -165,7 +165,7 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPrincipal.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.restaurantDetails.owner && (
+                              {isLoggedIn === true && user.user._id === restaurantDetails.restaurantDetails.owner && (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachPrincipal._id}
@@ -194,7 +194,7 @@ function AllDishesModal(restaurantDetails) {
                               <Badge bg="primary" pill>
                                 $ {eachPostre.price}
                               </Badge>
-                              {user.user._id === restaurantDetails.restaurantDetails.owner && (
+                              {isLoggedIn === true && user.user._id === restaurantDetails.restaurantDetails.owner && (
                                 <DeleteDishModal
                                   parentGetList={getList}
                                   parentListId={eachPostre._id}

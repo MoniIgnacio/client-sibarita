@@ -84,9 +84,6 @@ function RestaurantDetails() {
             <ReservaModal />
           )}
 
-          {/* {details !== undefined && (
-            <AllDishesModal restaurantDetails={details} />
-          )} */}
           <AllDishesModal restaurantDetails={details} />
           {(isLoggedIn === true && user.user._id === details.owner) && (
             <RestaurantEdit getRestaurant={getRestaurant}/>
