@@ -5,17 +5,16 @@ function Footer() {
         position: "fixed",
         left: "0",
         bottom: "0",
-        height: "68px",
+        height: "66px",
         width: "100%",
       }}
     >
       
   <footer className="footer">
     <ul className="menu">
-      <li className="menu__item"><a className="menu__link" href="#">Client</a></li>
-      <li className="menu__item"><a className="menu__link" href="#">Server</a></li>
-      <li className="menu__item"><a className="menu__link" href="#">About</a></li>
-      <li className="menu__item"><a className="menu__link" href="#">Team</a></li>
+      <li className="menu__item"><a className="menu__link" href="https://github.com/MoniIgnacio/client-sibarita"><img src="https://res.cloudinary.com/dbrqv6ypj/image/upload/v1668759559/Sibarita-img/khtqyiuurkezv6apovbs.png" alt="img-git" width={'30px'} /></a></li>
+      <li className="menu__item"><a className="menu__link" href="https://www.linkedin.com/in/jelle-manzano-haagsma-6a6785189/">Jelle <img src="https://res.cloudinary.com/dbrqv6ypj/image/upload/v1668760275/Sibarita-img/unhhwokhmybg5txkwjvk.png" alt="link-img" width={'15px'} style={{background:'white'}}/></a></li>
+      <li className="menu__item"><a className="menu__link" href="https://www.linkedin.com/in/moniignacio02">Nacho <img src="https://res.cloudinary.com/dbrqv6ypj/image/upload/v1668760275/Sibarita-img/unhhwokhmybg5txkwjvk.png" alt="link-img" width={'15px'} style={{background:'white'}}/></a></li>
       <li className="menu__item"><a className="menu__link" href="#">Contact</a></li>
 
     </ul>

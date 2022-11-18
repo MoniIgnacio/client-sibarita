@@ -73,8 +73,8 @@ function ClientProfile() {
           </Card.Body>
         </Card>
       </div>
-      <div style={{ width: "30vw", marginLeft: "20px" }}>
-        <Table striped>
+      <div style={{ width: "30vw", marginLeft: "20px"}}>
+        <Table striped style={{color:'white',textShadow:'2px 3px black'}}>
           <thead>
             <tr>
               <th>Restaurante</th>
@@ -84,14 +84,14 @@ function ClientProfile() {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody >
             {reservations.map((eachReservation) => {
               return (
-                <tr key={eachReservation._id}>
-                  <td>{eachReservation.restaurant.name}</td>
-                  <td>{eachReservation.fecha}</td>
-                  <td>{eachReservation.hour}</td>
-                  <td>{eachReservation.pax}</td>
+                <tr key={eachReservation._id} >
+                  <td style={{color:'white'}}>{eachReservation.restaurant.name}</td>
+                  <td style={{color:'white'}}>{eachReservation.fecha}</td>
+                  <td style={{color:'white'}}>{eachReservation.hour}</td>
+                  <td style={{color:'white'}}>{eachReservation.pax}</td>
                   <td>
                     <EditReserveModal
                       parentInfo={[

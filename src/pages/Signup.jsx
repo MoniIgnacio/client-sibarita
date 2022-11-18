@@ -49,7 +49,7 @@ function Signup() {
   };
 
   return (
-    <div style={{ padding: "15vh" }}>
+    <div style={{ padding: "15vh", color: 'white', textShadow:'2px 3px black'}}>
       <h1>Sign Up</h1>
 
       <Form onSubmit={handleSignup}>

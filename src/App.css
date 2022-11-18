@@ -4,6 +4,7 @@ body{
 background-repeat:round;
 background-attachment: fixed;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -20,12 +21,14 @@ background-attachment: fixed;
   position: relative;
   display: flex;
   justify-content: space-around;
-  margin: 10px 0;
+  margin-bottom: 8px;
+  align-items: center;
 }
 
 .social-icon__item,
 .menu__item {
   list-style: none;
+  padding: 2px;
 }
 
 .menu__link {
@@ -36,7 +39,6 @@ background-attachment: fixed;
 
 .footer p {
   color: #fff;
-  margin: 10px 0 0 0;
 }
 
 .App {
@@ -61,13 +63,13 @@ background-attachment: fixed;
    overflow: hidden;
    width: 550px;
    padding: 20px 25px;
-   box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.14)
+   box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.14);
+   background-color: lightgray;
 }
 
 #card .nameHolder h1 {
    font-size: 50px;
    margin: 0;
-   color: white;
 }
 
 #card .nameHolder h2 {
@@ -82,7 +84,6 @@ background-attachment: fixed;
    justify-content: space-between;
    padding: 20px 25px;
    font-weight: lighter;
-   color: white;
    font-size: 20px;
 }
 

@@ -2,8 +2,8 @@
 function NotFound() {
   //whenever you are trying to access a non existing route, you get redirected to this page
   return (
-    <div>
-    <img
+    <div style={{color:'white',textShadow:'2px 3px black'}}>
+    <img style={{borderRadius:'20px'}}
       src="https://res.cloudinary.com/dbrqv6ypj/image/upload/v1668682432/Sibarita-img/s0gm1mtbylpzo7jbfqbz.jpg"
       alt="Error-img"
       width={'60%'}

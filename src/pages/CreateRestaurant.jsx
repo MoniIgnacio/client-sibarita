@@ -61,7 +61,7 @@ function CreateRestaurant() {
   };
 
   return (
-    <div style={{ padding: "50px" }}>
+    <div style={{ padding: "50px", color:'white', textShadow:'2px 3px black' }}>
       <h1>Da de alta tu restaurante</h1>
 
       <Form onSubmit={handleCreate}>

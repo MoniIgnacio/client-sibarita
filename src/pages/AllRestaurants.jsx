@@ -39,7 +39,7 @@ function AllRestaurants() {
         {list.map((eachRestaurant) => {
           return (
             <Col key={eachRestaurant._id}>
-              <Card style={{ border: "2px solid grey", borderRadius: "10px", display: 'flex', alignItems: 'center', backgroundColor:'transparent', color: 'white'}}>
+              <Card style={{ border: "2px solid grey", borderRadius: "40px", display: 'flex', alignItems: 'center', backgroundColor:'lightgrey', color: 'black'}}>
                 <img style={{borderRadius: '10px'}}
                   src={eachRestaurant.photos}
                   alt="img-restaurant"

@@ -18,32 +18,60 @@ function Navbar() {
   return (
     <div
       style={{
-        backgroundColor: "lightblue",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-        height: "50px",
+        background: "#3586ff",
       }}
     >
-    {/* All this cortocircuit or conditionals are used to track if there is a user logged in, or tracks the role of the user in order to show or hide a button */}
-      <Link to={"/"}>Home</Link>
-      {isLoggedIn === true && <Link to={`/user/${user.user._id}`}>Perfil</Link>}
+      <div>
+        <ul className="menu">
+          <li className="menu__item">
+            {/* All this cortocircuit or conditionals are used to track if there is a user logged in, or tracks the role of the user in order to show or hide a button */}
+            <Link to={"/"} className="menu__link">
+              Home
+            </Link>
+          </li>
+          <li className="menu__item">
+            {isLoggedIn === true && (
+              <Link to={`/user/${user.user._id}`} className="menu__link">
+                Perfil
+              </Link>
+            )}
+          </li>
+          <li className="menu__item">
+            {isLoggedIn === true && user.user.role === "owner" && (
+              <Link to={"/restaurant/create"} className="menu__link">
+                Crear Restaurante
+              </Link>
+            )}
+          </li>
 
-      {isLoggedIn === true && user.user.role === "owner" && (
-        <Link to={"/restaurant/create"}>Crear Restaurant</Link>
-      )}
-
-      {isLoggedIn === false && <Link to={"/signup"}>Regístrate</Link>}
-
-      <Link to={"/restaurant/"}>All restaurants</Link>
-
-      {isLoggedIn === true ? (
-        <Button onClick={handleLogout} variant="secondary">
-          Cerrar Sesión
-        </Button>
-      ) : (
-        <LoginModal />
-      )}
+          <li className="menu__item">
+            {isLoggedIn === false && (
+              <Link to={"/signup"} className="menu__link">
+                Regístrate
+              </Link>
+            )}
+          </li>
+          <li className="menu__item">
+            <Link to={"/restaurant/"} className="menu__link">
+              Restaurantes
+            </Link>
+          </li>
+          <li className="menu__item">
+            {" "}
+            {isLoggedIn === true ? (
+              <Button
+                onClick={handleLogout}
+                variant="secondary"
+                className="menu__link"
+              >
+                Cerrar Sesión
+              </Button>
+            ) : (
+              <LoginModal />
+            )}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }

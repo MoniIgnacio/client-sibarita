@@ -188,9 +188,16 @@ function RestaurantEdit(props) {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
+             {/* Makes sure that you have uploaded an image for your restaurant in order to make usable the button to create the restaurant */}
+          {isUploadingImage === true ? (
+            <Button disabled={true} onClick={handleEdit}>
+              Editar
+            </Button>
+          ) : (
             <Button variant="primary" onClick={handleEdit}>
               Editar
             </Button>
+          )}
             <DeleteModalRestaurant />
           </Modal.Footer>
         </Modal>
