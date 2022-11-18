@@ -57,6 +57,7 @@ function AllDishesModal(restaurantDetails) {
       </div>
     );
   }
+
   let entradaDish = [];
   let principalDish = [];
   let postreDish = [];
