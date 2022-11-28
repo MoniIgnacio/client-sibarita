@@ -48,13 +48,15 @@ function RestaurantDetails() {
             return (
               <Carousel.Item
                 key={index}
-                style={{ backgroundColor: "lightgrey" }}
+                style={{ backgroundColor: "lightgrey"}}
               >
                 <img
-                  // className="d-block w-100"
+                  className="d-block w-100"
                   src={eachPhoto}
                   alt="restaurant-img"
                   width={'400px'}
+                  style={{borderRadius: "10px"}}
+
                 />
               </Carousel.Item>
             );
